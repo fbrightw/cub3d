@@ -1,4 +1,4 @@
-CC		=	gcc 
+CC		=	gcc
 
 NAME	=	cub3D
 
@@ -21,7 +21,7 @@ all:	$(NAME)
 $(NAME):	$(OBJS)
 		make -C $(LIBFT)
 		cp libft/libft.a ./$(NAME)
-		$(CC) ./libft/libft.a get_info/*.m -g -O3 -Imlx -lmlx -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
+		$(CC) ./libft/libft.a get_info/*.m -g -Imlx -lmlx -framework OpenGl -framework AppKit $(SRCS) -o $(NAME)
 
 .c.o:
 		$(CC) -I $(HDRS) -c $< -o $(<:.c=.o)

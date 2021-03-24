@@ -129,7 +129,7 @@ void		validation(t_mlx *mlx, int j)
 	// 	printf("%s\n", array[i]);
 	// 	i++;
 	// }
-	floodfill(mlx, array, (int)mlx->hero.x, (int)mlx->hero.y);
+	floodfill(mlx, array, (int)mlx->hero.y + 1, (int)mlx->hero.x + 1);
 	printf("floodfill %d %d\n", (int)mlx->hero.x, (int)mlx->hero.y);
 	i = 0;
 	while (array[i])

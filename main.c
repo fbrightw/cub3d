@@ -93,7 +93,9 @@ int				main(int argc, char **argv)
 	i = 0;
 	line = NULL;
 	zeros_to_var_in_mlx(&mlx);
+	printf("%s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
+	printf("fd = %d\n", fd);
 	if (fd == -1)
 	{
 		printf("%d\n", fd);
