@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void		free_everything(t_mlx *mlx, char ch)
+void		free_text_spr(t_mlx *mlx, char ch)
 {
 	int i;
 
@@ -38,14 +38,40 @@ void		free_everything(t_mlx *mlx, char ch)
 	}
 }
 
+void				free_floor_ceil(t_mlx *mlx)
+{
+	int i;
+
+	i = 0;
+	if (mlx->F)
+	{
+		while (mlx->F[i])
+		{
+			free(mlx->F[i]);
+			i++;
+		}
+		free(mlx->F);
+	}
+	i = 0;
+	if (mlx->C)
+	{
+		while (mlx->C[i])
+		{
+			free(mlx->C[i]);
+			i++;
+		}
+		free(mlx->C);
+	}
+}
+
 void		write_errors(t_mlx *mlx, int fl)
 {
 	ft_lstclear(&mlx->lists, free);
 	if (mlx->mem_to_spr == 1)
-		free_everything(mlx, 'T');
+		free_text_spr(mlx, 'T');
 	if (mlx->mem_to_text == 1)
-		free_everything(mlx, 'S');
-
+		free_text_spr(mlx, 'S');
+	free_floor_ceil(mlx);
 	if (fl == 1)
 		printf("Error with size of window");
 	if (fl == 2)

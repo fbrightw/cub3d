@@ -16,8 +16,9 @@ int			close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->ptr, mlx->win);
 	ft_lstclear(&mlx->lists, free);
-	free_everything(mlx, 'T');
-	free_everything(mlx, 'S');
+	free_text_spr(mlx, 'T');
+	free_text_spr(mlx, 'S');
+	free_floor_ceil(mlx);
 	exit(0);
 }
 
