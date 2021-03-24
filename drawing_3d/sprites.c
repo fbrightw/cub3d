@@ -65,15 +65,13 @@ void	draw_vert_of_spr(t_mlx *mlx, float deg_pl_spr, double *distances, int i)
 	}
 }
 
-void	drawing_sprites(t_mlx *mlx, double *distances)
+void	drawing_sprites(t_mlx *mlx, double *distances, int i)
 {
 	float	degree_between_pl_spr;
-	int		i;
 	double	delta;
 	double	rad;
 
-	i = 0;
-	while (i < mlx->spr_count)
+	if (mlx->spr[i]->dist > 12)
 	{
 		if (fabs(mlx->spr[i]->y - mlx->hero.y) > 0.000000001)
 			delta = mlx->hero.y - mlx->spr[i]->y;
@@ -92,7 +90,6 @@ void	drawing_sprites(t_mlx *mlx, double *distances)
 			rad = degree_between_pl_spr - mlx->hero.main_degree * (M_PI / 180);
 		}
 		draw_vert_of_spr(mlx, degree_between_pl_spr, distances, i);
-		i++;
 	}
 }
 

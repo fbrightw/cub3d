@@ -89,9 +89,7 @@ int				main(int argc, char **argv)
 	zeros_to_var_in_mlx(&mlx);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-	{
 		write_errors(&mlx, 8);
-	}
 	mlx.lists = ft_reading(&mlx, fd, line);
 	if (!(mlx.map = ft_calloc(mlx.size - mlx.q_lines + 2, sizeof(char*))))
 	{

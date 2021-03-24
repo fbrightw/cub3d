@@ -118,7 +118,11 @@ int			find_textures(t_mlx *mlx, char *line)
 		return (0);
 	}
 	if (mlx->NO && mlx->SO && mlx->WE && mlx->EA && mlx->S && mlx->F && mlx->C)
+	{
+		if (!ft_strchr_mod(line, "NEWSFC120", &index, &ch))
+			write_errors(mlx, 4);
 		return (0);
+	}
 	if (!ft_strchr_mod(line, "NEWSFC120", &index, &ch))
 		write_errors(mlx, 4);
 	return (screen_res_newsc(mlx, line, textures));

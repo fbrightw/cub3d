@@ -88,10 +88,14 @@ void	find_dist(t_mlx *mlx, double *dist_x, double *dist_y, int fl)
 
 void	sprites(t_mlx *mlx, double *distances)
 {
+	int i;
+
+	i = 0;
 	find_exact_spr(mlx);
-	if (mlx->map[(int)mlx->hero.y][(int)mlx->hero.x] != '2')
+	sort_sprites(mlx);
+	while (i < mlx->spr_count)
 	{
-		sort_sprites(mlx);
-		drawing_sprites(mlx, distances);
+		drawing_sprites(mlx, distances, i);
+		i++;
 	}
 }

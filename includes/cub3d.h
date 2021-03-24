@@ -136,7 +136,8 @@ void				ft_start(t_mlx *mlx);
 void				ft_texturees(t_mlx *mlx);
 void				ft_raycasting(t_mlx *mlx, int color);
 void				xpm_to_spr(t_mlx *mlx);
-void				ft_ew(t_mlx *mlx, int slice_numb, double *distances, int fl_text);
+void				ft_ns(t_mlx *mlx, int slice_numb, double *distances, char side);
+void				ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side);
 void				first_hit_hor(t_mlx *mlx, double *dist_x, double *dist_y, double tang);
 void				ft_seg_sit(t_mlx *mlx, double *dist_x, double *dist_y);
 void				first_hit_vert(t_mlx *mlx, double *dist_x, double *dist_y, double tang);
@@ -145,7 +146,7 @@ void				drawing_3d(t_mlx *mlx, int slice_n, int fl, int i_text);
 void				sprites(t_mlx *mlx, double *distances);
 int					find_exact_spr(t_mlx *mlx);
 void				sort_sprites(t_mlx *mlx);
-void				drawing_sprites(t_mlx *mlx, double *distances);
+void				drawing_sprites(t_mlx *mlx, double *distances, int i);
 
 int					fill_texts(t_mlx *mlx, char *line, int *ch);
 int					ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch);

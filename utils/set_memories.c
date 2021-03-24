@@ -26,7 +26,7 @@ void		set_mem_to_text(t_mlx *mlx)
 		i++;
 	}
 	mlx->mem_to_text = 1;
-}
+}	
 
 void		ft_texturees(t_mlx *mlx)
 {

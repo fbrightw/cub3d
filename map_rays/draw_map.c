@@ -73,7 +73,6 @@ void		ft_create_game(t_mlx *mlx)
 
 void		ft_start(t_mlx *mlx)
 {
-	// printf("YA\n");
 	mlx->fl = 1;
 	if (mlx->hero.dir == 'N')
 		mlx->hero.main_degree = 90;

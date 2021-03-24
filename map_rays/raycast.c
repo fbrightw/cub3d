@@ -118,7 +118,13 @@ void	ft_raycasting(t_mlx *mlx, int color)
 			mlx->hero.fov += 360.0;
 		mlx->rad = mlx->hero.fov * M_PI / 180;
 		if ((int)(fabs(sin(mlx->rad))) == 0 && fabs(mlx->hero.fov) < 0.000001)
-			ft_ew(mlx, i, distances, 3);
+			ft_ew(mlx, i, distances, 'E');
+		if ((int)(fabs(sin(mlx->rad))) == 0 && fabs(mlx->hero.fov - 180) < 0.000001)
+			ft_ew(mlx, i, distances,'W');
+		if ((int)(fabs(cos(mlx->rad))) == 0 && fabs(mlx->hero.fov - 90) < 0.000001)
+			ft_ns(mlx, i, distances,'N');
+		if ((int)(fabs(cos(mlx->rad))) == 0 && fabs(mlx->hero.fov - 270) < 0.000001)
+			ft_ns(mlx, i, distances, 'S');
 		else
 			ft_draw_rays(mlx, i, distances);
 		mlx->hero.fov -= ((float)60 / mlx->window.w);

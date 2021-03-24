@@ -53,6 +53,9 @@ void		check_floor_ceil(t_mlx *mlx, char **line)
 			else
 				write_errors(mlx, 9);
 		}
+		if (ft_atoi(line[i]) > 255)
+			write_errors(mlx, 9);
+		else
 			i++;
 	}
 	if (i > 3)
