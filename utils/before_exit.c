@@ -12,28 +12,40 @@
 
 #include "../includes/cub3d.h"
 
-void		free_everything(t_mlx *mlx)
+void		free_everything(t_mlx *mlx, char ch)
 {
 	int i;
 
 	i = 0;
-	while (i < 4)
+	if (ch == 'T')
 	{
-		free(mlx->text[i]);
-		i++;
+		while (i < 4)
+		{
+			free(mlx->text[i]);
+			i++;
+		}
+		free(mlx->text);
 	}
-	free(mlx->text);
-	i = 0;
-	while (i < mlx->spr_count)
+	else if (ch == 'S')
 	{
-		free(mlx->spr[i]);
-		i++;
+		i = 0;
+		while (i < mlx->spr_count)
+		{
+			free(mlx->spr[i]);
+			i++;
+		}
+		free(mlx->spr);
 	}
-	free(mlx->spr);
 }
 
 void		write_errors(t_mlx *mlx, int fl)
 {
+	ft_lstclear(&mlx->lists, free);
+	if (mlx->mem_to_spr == 1)
+		free_everything(mlx, 'T');
+	if (mlx->mem_to_text == 1)
+		free_everything(mlx, 'S');
+
 	if (fl == 1)
 		printf("Error with size of window");
 	if (fl == 2)
@@ -50,5 +62,7 @@ void		write_errors(t_mlx *mlx, int fl)
 		printf("wrong map!!!");
 	if (fl == 8)
 		printf("wrong name of map file!!!");
+	if (fl == 9)
+		printf("colors of floor or ceiling is wrong");
 	exit(0);
 }

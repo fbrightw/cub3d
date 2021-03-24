@@ -91,6 +91,8 @@ typedef struct					s_mlx
 	t_wall_texture	**text;
 	t_sprites		**spr;
 	t_list			*lists;
+	int				mem_to_text;
+	int				mem_to_spr;
 	double			rad;
 	double			h_off;
 	int				i;
@@ -167,7 +169,7 @@ void				write_errors(t_mlx *mlx, int fl);
 int					check_line(t_mlx *mlx, char *line);
 void				change(t_mlx *mlx, int i, int j);
 void				free_map(t_mlx *mlx);
-void				free_everything(t_mlx *mlx);
-void				free_floor_ceil(t_mlx *mlx, int i);
+void				free_everything(t_mlx *mlx, char ch);
+// void				free_floor_ceil(t_mlx *mlx, int i);
 
 #endif

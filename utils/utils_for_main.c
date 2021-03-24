@@ -81,6 +81,8 @@ void			zeros_to_var_in_mlx(t_mlx *mlx)
 	mlx->hero.x = -1;
 	mlx->hero.y = -1;
 	mlx->i = 0;
+	mlx->mem_to_text = 0;
+	mlx->mem_to_spr = 0;
 }
 
 void			floodfill(t_mlx *mlx, char **array, int x, int y)

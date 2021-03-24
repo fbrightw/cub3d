@@ -32,10 +32,11 @@ void		wall_or_sprite(t_mlx *mlx, int i)
 {
 	int w;
 	int h;
+	int scale1;
 
 	w = 0;
 	h = 0;
-	int scale1 = mlx->window.w / 100;
+	scale1 = mlx->window.w / 100;
 	if (mlx->map[i][mlx->window.i] == '1' || mlx->map[i][mlx->window.i] == '2')
 	{
 		h = i * scale1;

@@ -15,7 +15,9 @@
 int			close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->ptr, mlx->win);
-	free_everything(mlx);
+	ft_lstclear(&mlx->lists, free);
+	free_everything(mlx, 'T');
+	free_everything(mlx, 'S');
 	exit(0);
 }
 

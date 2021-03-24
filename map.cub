@@ -1,11 +1,11 @@
-R 320 200
+R 320 1080
 EA ./xpm_files/ASLEEP.xpm
 NO ./xpm_files/Bart.xpm
 SO ./xpm_files/DOPE.xpm
 WE ./xpm_files/LIZII.xpm
 S ./xpm_files/liza_simpson_saks.xpm
-F 167,147,144
-C 20,110,1
+F 167,14,1
+C 20,110,10
 
 
 

@@ -40,16 +40,23 @@ int			init_texts(t_mlx *mlx, char *line, char *fl_of_side)
 void		check_floor_ceil(t_mlx *mlx, char **line)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while (line[i])
-		i++;
-	if (i > 3)
 	{
-		i = 0;
-		// free_floor_ceil(mlx, i);
-		write_errors(mlx, 4);
+		j = 0;
+		while (line[i][j])
+		{
+			if (ft_isdigit((line[i][j])))
+				j++;
+			else
+				write_errors(mlx, 9);
+		}
+			i++;
 	}
+	if (i > 3)
+		write_errors(mlx, 4);
 }
 
 char		*spaces_or_end(t_mlx *mlx, char *line)
