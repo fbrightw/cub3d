@@ -104,19 +104,6 @@ char		**put_frame(t_mlx *mlx, int max_row)
 	return (array);
 }
 
-void		floodfill(t_mlx *mlx, char **array, int x, int y)
-{
-	if (array[x][y] == '8' || array[x][y] == '1')
-		return ;
-	if (array[x][y] == '9')
-		write_errors(mlx, 7);
-	array[x][y] = '8';
-	floodfill(mlx, array, x + 1, y);
-	floodfill(mlx, array, x, y + 1);
-	floodfill(mlx, array, x - 1, y);
-	floodfill(mlx, array, x, y - 1);
-}
-
 void		validation(t_mlx *mlx, int j)
 {
 	int		i;
@@ -124,19 +111,12 @@ void		validation(t_mlx *mlx, int j)
 
 	i = 0;
 	array = put_frame(mlx, j);
-	// while (array[i])
-	// {
-	// 	printf("%s\n", array[i]);
-	// 	i++;
-	// }
 	floodfill(mlx, array, (int)mlx->hero.y + 1, (int)mlx->hero.x + 1);
-	printf("floodfill %d %d\n", (int)mlx->hero.x, (int)mlx->hero.y);
 	i = 0;
 	while (array[i])
 	{
-		printf("%s\n", array[i]);
-		// free(array[i]);
+		free(array[i]);
 		i++;
 	}
-	// free(array);
+	free(array);
 }

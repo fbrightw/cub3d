@@ -78,18 +78,20 @@ void			zeros_to_var_in_mlx(t_mlx *mlx)
 	mlx->ray.distY = 0;
 	mlx->ray.HitYx = 0;
 	mlx->ray.HitYy = 0;
+	mlx->hero.x = -1;
+	mlx->hero.y = -1;
 	mlx->i = 0;
 }
 
-// void			floodfill(t_mlx *mlx, char **array, int x, int y)
-// {
-// 	if (array[x][y] == '8' || array[x][y] == '1')
-// 		return ;
-// 	if (array[x][y] == '9')
-// 		write_errors(mlx, 7);
-// 	array[x][y] = '8';
-// 	floodfill(mlx, array, x + 1, y);
-// 	floodfill(mlx, array, x, y + 1);
-// 	floodfill(mlx, array, x - 1, y);
-// 	floodfill(mlx, array, x, y - 1);
-// }
+void			floodfill(t_mlx *mlx, char **array, int x, int y)
+{
+	if (array[x][y] == '8' || array[x][y] == '1')
+		return ;
+	if (array[x][y] == '9')
+		write_errors(mlx, 7);
+	array[x][y] = '8';
+	floodfill(mlx, array, x + 1, y);
+	floodfill(mlx, array, x, y + 1);
+	floodfill(mlx, array, x - 1, y);
+	floodfill(mlx, array, x, y - 1);
+}

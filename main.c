@@ -45,7 +45,6 @@ int				map_filling(t_mlx *mlx, t_list *head)
 		if (i >= mlx->q_lines)
 		{
 			mlx->map[i - mlx->q_lines] = head->content;
-			printf("%s\n", mlx->map[i - mlx->q_lines]);
 			check_line(mlx, mlx->map[i - mlx->q_lines]);
 			if (ft_strchr_mod(mlx->map[i - mlx->q_lines], "NEWS", &index, &ch))
 				find_pl(mlx->map[i - mlx->q_lines], mlx, i - mlx->q_lines, ch);
@@ -69,15 +68,10 @@ t_list			*ft_reading(t_mlx *mlx, int fd, char *line)
 	while (ft_get_next_line(fd, &line))
 	{
 		i++;
-		// printf("%s\n", line);
 		ft_lstadd_back(&head, ft_lstnew(line));
 		if (find_textures(mlx, line) == 1)
-		{
-			// printf("%s\n", line);
 			mlx->q_lines++;
-		}
 	}
-	// printf("q1 %d\n", mlx->q_lines);
 	ft_lstadd_back(&head, ft_lstnew(line));
 	mlx->size = i + 1;
 	return (head);
@@ -93,29 +87,20 @@ int				main(int argc, char **argv)
 	i = 0;
 	line = NULL;
 	zeros_to_var_in_mlx(&mlx);
-	printf("%s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
-	printf("fd = %d\n", fd);
 	if (fd == -1)
 	{
-		printf("%d\n", fd);
-		write(1, "YA\n", 3);
 		write_errors(&mlx, 8);
 	}
 	mlx.lists = ft_reading(&mlx, fd, line);
-	printf("q %d size = %d\n", mlx.q_lines, mlx.size);
 	if (!(mlx.map = ft_calloc(mlx.size - mlx.q_lines + 2, sizeof(char*))))
 	{
 		ft_lstclear(&(mlx.lists), free);
 		exit(0);
 	}
-	write(1, "YA\n", 3);
 	i = map_filling(&mlx, mlx.lists);
-	write(1, "YA\n", 3);
 	validation(&mlx, i);
-	// mlx.size = mlx.size - mlx.q_lines;
-	// // write(1, "YA\n", 3);
-	// printf("size %d\n", mlx.size);
-	// close(fd);
-	// ft_start(&mlx);
+	mlx.size = mlx.size - mlx.q_lines;
+	close(fd);
+	ft_start(&mlx);
 }

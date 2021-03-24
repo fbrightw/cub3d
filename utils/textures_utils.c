@@ -108,23 +108,19 @@ int			find_textures(t_mlx *mlx, char *line)
 	int		ch;
 
 	ch = 0;
-	// printf("%s %s %s %s\n", mlx->NO, mlx->SO, mlx->EA, mlx->WE);
 	ft_assigning_zeroes(&index, &ch, mlx);
 	if (*line != 0)
 		while (*line == ' ')
 			line++;
 	if (*line == 0)
 	{
-		printf("%s\n", line);
 		mlx->q_lines += 1;
 		return (0);
 	}
-	// printf("%s\n", line);
 	if (mlx->NO && mlx->SO && mlx->WE && mlx->EA && mlx->S && mlx->F && mlx->C)
 		return (0);
 	if (!ft_strchr_mod(line, "NEWSFC120", &index, &ch))
 		write_errors(mlx, 4);
-	// printf("%s\n", line);
 	return (screen_res_newsc(mlx, line, textures));
 	return (0);
 }
