@@ -35,14 +35,15 @@ void		wall_or_sprite(t_mlx *mlx, int i)
 
 	w = 0;
 	h = 0;
+	int scale1 = mlx->window.w / 100;
 	if (mlx->map[i][mlx->window.i] == '1' || mlx->map[i][mlx->window.i] == '2')
 	{
-		h = i * SCALE;
-		while (h++ < SCALE + i * SCALE)
+		h = i * scale1;
+		while (h++ < scale1 + i * scale1)
 		{
-			w = mlx->window.i * SCALE;
+			w = mlx->window.i * scale1;
 			{
-				while (w++ < SCALE + mlx->window.i * SCALE)
+				while (w++ < scale1 + mlx->window.i * scale1)
 				{
 					if (mlx->map[i][mlx->window.i] == '2')
 						my_mlx_pixel_put(mlx, w, h, 0x00000000);

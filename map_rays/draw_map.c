@@ -22,8 +22,6 @@ int			close_window(t_mlx *mlx)
 void		draw_everything(t_mlx *mlx, char **map, int color)
 {
 	ft_raycasting(mlx, color);
-		// printf("VIS\n");
-	printf("%d %d\n", mlx->size, mlx->q_lines);
 	ft_draw_map(mlx);
 	// if (mlx->fl == 1)
 	// 	screenshot(mlx);
@@ -60,7 +58,6 @@ int			key_press(int keycode, t_mlx *mlx)
 
 void		ft_create_game(t_mlx *mlx)
 {
-	// printf("YA\n");
 	mlx->ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->ptr, mlx->window.w, mlx->window.h, "CUB");
 	mlx->img.img = mlx_new_image(mlx->ptr, mlx->window.w, mlx->window.h);
@@ -84,7 +81,6 @@ void		ft_start(t_mlx *mlx)
 	else if (mlx->hero.dir == 'E')
 		mlx->hero.main_degree = 0;
 	ft_create_game(mlx);
-	// printf("VIS\n");
 	mlx_hook(mlx->win, 2, 1L << 0, key_press, mlx);
 	mlx_hook(mlx->win, 17, 0, close_window, mlx);
 	mlx_loop((*mlx).ptr);
