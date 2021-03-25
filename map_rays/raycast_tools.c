@@ -17,17 +17,16 @@ void	ft_seg_sit(t_mlx *mlx, double *dist_x, double *dist_y)
 	int y;
 
 	y = (*dist_y / SCALE);
-	if (*dist_y < 0)
+	if (y < 0)
 		*dist_y = 0;
 	if (y >= mlx->size)
 		*dist_y = (mlx->size - 1) * SCALE;
+	y = (*dist_y / SCALE);
 	if (*dist_x < 0)
 		*dist_x = 0;
 	if (y < mlx->size)
-	{
 		if ((int)(*dist_x / SCALE) >= (ft_strlen(mlx->map[y])) - 1)
 			*dist_x = (ft_strlen(mlx->map[y]) - 1) * SCALE;
-	}
 }
 
 void	first_hit_hor(t_mlx *mlx, double *dist_x, double *dist_y, double tang)

@@ -91,6 +91,7 @@ typedef struct					s_mlx
 	t_wall_texture	**text;
 	t_sprites		**spr;
 	t_list			*lists;
+	int				argc;
 	int				mem_to_text;
 	int				mem_to_spr;
 	double			rad;
@@ -103,7 +104,7 @@ typedef struct					s_mlx
 	int				spr_count;
 	int				dist_to_proj;
 	int				height_3d;
-	double				texture_x;
+	double			texture_x;
 	char			**map;
 	int				begin_map;
 	int				q_lines;
@@ -132,7 +133,7 @@ void				count_spr(t_mlx *mlx, int j, int *count);
 void				find_spr(t_mlx *mlx, int *count);
 void				validation(t_mlx *mlx, int j);
 void				floodfill(t_mlx *mlx, char **array, int x, int y);
-void				ft_start(t_mlx *mlx);
+void				ft_start(t_mlx *mlx, int argc);
 void				ft_texturees(t_mlx *mlx);
 void				ft_raycasting(t_mlx *mlx, int color);
 void				xpm_to_spr(t_mlx *mlx);
@@ -147,12 +148,9 @@ void				sprites(t_mlx *mlx, double *distances);
 int					find_exact_spr(t_mlx *mlx);
 void				sort_sprites(t_mlx *mlx);
 void				drawing_sprites(t_mlx *mlx, double *distances, int i);
-
 int					fill_texts(t_mlx *mlx, char *line, int *ch);
 int					ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch);
 void				set_mem_for_spr(t_mlx *mlx, int *count);
-
-
 int					create_trgb(int t, int r, int g, int b);
 void				find_exact_ch(char *s, char *str, int *fl, int *ch);
 int					ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y);
@@ -160,7 +158,6 @@ void				left_right(t_mlx *mlx, int keycode);
 int					ft_assigning(t_mlx *mlx, double new_x, double new_y);
 int					close_window(t_mlx *mlx);
 void				ft_draw_map(t_mlx *mlx);
-
 void				set_mem_to_text(t_mlx *mlx);
 void				my_mlx_pixel_put(t_mlx *mlx,int x, int y, int color);
 void				screenshot(t_mlx *mlx);

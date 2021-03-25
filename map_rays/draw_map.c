@@ -26,8 +26,8 @@ void		draw_everything(t_mlx *mlx, char **map, int color)
 {
 	ft_raycasting(mlx, color);
 	ft_draw_map(mlx);
-	// if (mlx->fl == 1)
-	// 	screenshot(mlx);
+	if (mlx->argc == 3)
+		screenshot(mlx);
 }
 
 int			key_press(int keycode, t_mlx *mlx)
@@ -71,7 +71,7 @@ void		ft_create_game(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.img, 0, 0);
 }
 
-void		ft_start(t_mlx *mlx)
+void		ft_start(t_mlx *mlx, int argc)
 {
 	mlx->fl = 1;
 	if (mlx->hero.dir == 'N')
@@ -82,6 +82,7 @@ void		ft_start(t_mlx *mlx)
 		mlx->hero.main_degree = 180;
 	else if (mlx->hero.dir == 'E')
 		mlx->hero.main_degree = 0;
+	mlx->argc = argc;
 	ft_create_game(mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, key_press, mlx);
 	mlx_hook(mlx->win, 17, 0, close_window, mlx);

@@ -44,32 +44,41 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 
 int			ceiling(t_mlx *mlx, char *line)
 {
-	line++;
-	if (*line == ' ')
-	{
-		while (*line == ' ')
-			line++;
-		mlx->C = ft_split(line, ',');
-		check_floor_ceil(mlx, mlx->C);
-		return (1);
-	}
-	return (0);
-}
-
-int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
-{
-	if (*ch == 'F')
+	if (!(mlx->C))
 	{
 		line++;
 		if (*line == ' ')
 		{
 			while (*line == ' ')
 				line++;
-			mlx->F = ft_split(line, ',');
-			check_floor_ceil(mlx, mlx->F);
+			mlx->C = ft_split(line, ',');
+			check_floor_ceil(mlx, mlx->C);
 			return (1);
 		}
 		return (0);
+	}
+	write_errors(mlx, 6);
+	return(0);
+}
+
+int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
+{
+	if (*ch == 'F')
+	{
+		if (!(mlx->F))
+		{
+			line++;
+			if (*line == ' ')
+			{
+				while (*line == ' ')
+					line++;
+				mlx->F = ft_split(line, ',');
+				check_floor_ceil(mlx, mlx->F);
+				return (1);
+			}
+			return (0);
+		}
+		write_errors(mlx, 6);
 	}
 	else if (*ch == 'C')
 		return (ceiling(mlx, line));
@@ -85,10 +94,14 @@ int			screen_res_newsc(t_mlx *mlx, char *line, char **textures)
 	if (ft_strnstr(line, "R", 1))
 	{
 		textures = ft_split(line, ' ');
-		mlx->window.w = ft_atoi(textures[1]);
-		mlx->window.h = ft_atoi(textures[2]);
-		check_window(mlx, textures);
-		return (1);
+		if (mlx->window.w == -1 && mlx->window.h  == -1)
+		{
+			mlx->window.w = ft_atoi(textures[1]);
+			mlx->window.h = ft_atoi(textures[2]);
+			check_window(mlx, textures);
+			return (1);
+		}
+		write_errors(mlx, 6);
 	}
 	if (strchr_mod(line, "NEWSFC", &index, &ch) == 1)
 	{

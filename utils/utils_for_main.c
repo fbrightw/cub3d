@@ -83,6 +83,8 @@ void			zeros_to_var_in_mlx(t_mlx *mlx)
 	mlx->i = 0;
 	mlx->mem_to_text = 0;
 	mlx->mem_to_spr = 0;
+	mlx->window.w = -1;
+	mlx->window.h = -1;
 }
 
 void			floodfill(t_mlx *mlx, char **array, int x, int y)

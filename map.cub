@@ -1,13 +1,12 @@
 R 1200 1080
+
 NO ./xpm_files/Bart.xpm
 SO ./xpm_files/DOPE.xpm
 WE ./xpm_files/LIZII.xpm
 EA ./xpm_files/ASLEEP.xpm
 S ./xpm_files/liza_simpson_saks.xpm
-F 167,14,220
-F 167,14,220
+F 20,210,11
 C 20,110,10
-
 
 
 

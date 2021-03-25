@@ -39,6 +39,7 @@ void	check_window(t_mlx *mlx, char **textures)
 	}
 	if (mlx->window.w < 80 || mlx->window.h < 50)
 		write_errors(mlx, 1);
+	
 }
 
 int		open_images(t_mlx *mlx, char *line)

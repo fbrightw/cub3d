@@ -20,7 +20,7 @@ void		screenshot(t_mlx *mlx)
 	arr_info[5] = size >> 24;
 	arr_info[10] = 54;
 	arr_info[14] = 40;
-	arr_info[26] = 1;
+	arr_info[26] = 0;
 	arr_info[28] = 24;
 	arr_info[18] = w;
 	arr_info[19] = w >> 8;

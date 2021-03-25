@@ -34,7 +34,7 @@ void	ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side)
 	}
 	deltax = fabs(mlx->hero.posx - sidedistx);
 	mlx->ray.distX = deltax;
-	mlx->ray.distx_y = sidedistx;
+	mlx->ray.distx_y = mlx->hero.y * SCALE;
 	distances[slice_numb] = mlx->ray.distX;
 	drawing_3d(mlx, slice_numb, 0, fl_text);
 }
@@ -63,6 +63,7 @@ void	ft_ns(t_mlx *mlx, int slice_numb, double *distances, char side)
 	}
 	distances[slice_numb] = mlx->ray.distY;
 	deltay = fabs(mlx->hero.posy - sidedisty);
+	mlx->ray.disty_x = mlx->hero.x * SCALE;
 	mlx->ray.distY = deltay;
 	drawing_3d(mlx, slice_numb, 1, fl_text);
 }
