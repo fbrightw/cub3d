@@ -127,6 +127,7 @@ int					ft_strchr_mod(char *str, char *s, int *index, int *ch);
 int					strchr_mod(char *str, char *s, int *index, int *ch);
 void				check_window(t_mlx *mlx, char **textures);
 int					fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3]);
+int					ft_additional(t_mlx *mlx, char *line, int *index, int *ch);
 void				check_textures(t_mlx *mlx, char *line, char *fl_of_side);
 int					init_texts(t_mlx *mlx, char *line, char *fl_of_side);
 void				check_floor_ceil(t_mlx *mlx, char **line);

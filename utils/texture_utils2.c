@@ -72,7 +72,6 @@ char		*spaces_or_end(t_mlx *mlx, char *line)
 		line++;
 		i += 1;
 	}
-	printf("%s\n", line);
 	if (*line == 0)
 	{
 		mlx->q_lines += 1;
@@ -98,7 +97,7 @@ void		ft_assigning_zeroes(int *index, int *ch, t_mlx *mlx)
 int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 {
 	int		index;
-	char	ch;
+	int	ch;
 
 	index = 0;
 	ch = 0;
@@ -114,6 +113,12 @@ int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 			return (init_texts(mlx, line, fl_of_side));
 		}
 		write_errors(mlx, 4);
+	}
+	if (strchr_mod(line, "NEWSFC", &index, &ch))
+	{
+		index += 1;
+		if (ft_additional(mlx, line, &index, &ch))
+			write_errors(mlx, 6);
 	}
 	return (0);
 }

@@ -73,24 +73,28 @@ void		write_errors(t_mlx *mlx, int fl)
 		free_text_spr(mlx, 'S');
 	free_floor_ceil(mlx);
 	if (fl == 1)
-		printf("Error with size of window");
+		printf("Error\n with size of window");
 	if (fl == 2)
-		printf("Negative size of window");
+		printf("Error\nNegative size of window");
 	if (fl == 3)
-		printf("Wrong name of textures");
+		printf("Error\nWrong name of textures");
 	if (fl == 4)
-		printf("odd characters");
+		printf("Error\nodd characters");
 	if (fl == 5)
-		printf("spaces in wrong places");
+		printf("Error\nspaces in wrong places");
 	if (fl == 6)
-		printf("duplicates!");
+		printf("Error\nduplicates!");
 	if (fl == 7)
-		printf("wrong map!!!");
+		printf("Error\nwrong map!!!");
 	if (fl == 8)
-		printf("wrong name of map file!!!");
+		printf("Error\nwrong name of map file!!!");
 	if (fl == 9)
-		printf("colors of floor or ceiling is wrong");
+		printf("Error\ncolors of floor or ceiling is wrong");
 	if (fl == 10)
-		printf("something wrong with argv");
+		printf("Error\nsomething wrong with argv");
+	if (fl == 11)
+		printf("Error\nsomething is missing");
+	if (fl == 12)
+		printf("Error\ntoo many commas");
 	exit(0);
 }

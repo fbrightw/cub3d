@@ -130,5 +130,5 @@ void	ft_raycasting(t_mlx *mlx, int color)
 		mlx->hero.fov -= ((float)60 / mlx->window.w);
 		i++;
 	}
-	sprites(mlx, distances);
+	// sprites(mlx, distances);
 }

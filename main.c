@@ -62,17 +62,21 @@ t_list			*ft_reading(t_mlx *mlx, int fd, char *line)
 {
 	t_list	*head;
 	int		i;
+	int ret;
 
 	i = 0;
 	head = NULL;
-	while (ft_get_next_line(fd, &line))
+	while ((ret = ft_get_next_line(fd, &line)) > 0)
 	{
 		i++;
 		ft_lstadd_back(&head, ft_lstnew(line));
 		if (find_textures(mlx, line) == 1)
 			mlx->q_lines++;
 	}
-	ft_lstadd_back(&head, ft_lstnew(line));
+	if (ret == -1)
+		write_errors(mlx, 10);
+	else
+		ft_lstadd_back(&head, ft_lstnew(line));
 	mlx->size = i + 1;
 	return (head);
 }
