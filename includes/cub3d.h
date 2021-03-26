@@ -91,6 +91,7 @@ typedef struct					s_mlx
 	t_wall_texture	**text;
 	t_sprites		**spr;
 	t_list			*lists;
+	char			**argv;
 	int				argc;
 	int				mem_to_text;
 	int				mem_to_spr;
@@ -133,7 +134,7 @@ void				count_spr(t_mlx *mlx, int j, int *count);
 void				find_spr(t_mlx *mlx, int *count);
 void				validation(t_mlx *mlx, int j);
 void				floodfill(t_mlx *mlx, char **array, int x, int y);
-void				ft_start(t_mlx *mlx, int argc);
+void				ft_start(t_mlx *mlx, int argc, char **argv);
 void				ft_texturees(t_mlx *mlx);
 void				ft_raycasting(t_mlx *mlx, int color);
 void				xpm_to_spr(t_mlx *mlx);

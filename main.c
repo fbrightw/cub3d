@@ -100,5 +100,5 @@ int				main(int argc, char **argv)
 	validation(&mlx, i);
 	mlx.size = mlx.size - mlx.q_lines;
 	close(fd);
-	ft_start(&mlx, argc);
+	ft_start(&mlx, argc, argv);
 }

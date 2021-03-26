@@ -1,17 +1,24 @@
 #include "../includes/cub3d.h"
 
-void		screenshot(t_mlx *mlx)
+void	draw_screen(t_mlx *mlx, int h, int w, int fd)
 {
-	int fd;
-	int size;
-	char arr_info[54];
-	int  w = mlx->window.w;
-	int h = mlx->window.h;
-	fd = open("screenshot.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND,0666);
-	while (w % 4 != 0)
-		w--;
-	size = 54 + (4 * w * h);
-	ft_memset(arr_info, 0, 54);
+	int var[3];
+	var[0] = h - 1;
+	while (var[0] >= 0)
+	{
+		var[1] = 0;
+		while (var[1] < w)
+		{
+			var[2] = *(int*)(mlx->img.data + (var[0] * mlx->img.l_len + var[1] * (mlx->img.bpp / 8)));
+			write(fd, &var[2], 3);
+			var[1]++;
+		}
+		var[0]--;
+	}
+}
+
+void	filling_array(char arr_info[54], int w, int h, int size)
+{
 	arr_info[0] = 'B';
 	arr_info[1] = 'M';
 	arr_info[2] = size;
@@ -30,20 +37,21 @@ void		screenshot(t_mlx *mlx)
 	arr_info[23] = h >> 8;
 	arr_info[24] = h >> 16;
 	arr_info[25] = h >> 24;
+}
+
+void		screenshot(t_mlx *mlx)
+{
+	int fd;
+	int size;
+	char arr_info[54];
+	fd = open("screenshot.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND,0666);
+	while (mlx->window.w % 4 != 0)
+		mlx->window.w--;
+	size = 54 + (4 * mlx->window.w * mlx->window.h);
+	ft_memset(arr_info, 0, 54);
+	filling_array(arr_info, mlx->window.w, mlx->window.h, size);
 	write(fd, arr_info, 54);
-	int var[3];
-	var[0] = h - 1;
-	while (var[0] >= 0)
-	{
-		var[1] = 0;
-		while (var[1] < w)
-		{
-			var[2] = *(int*)(mlx->img.data + (var[0] * mlx->img.l_len + var[1] * (mlx->img.bpp / 8)));
-			write(fd, &var[2], 3);
-			var[1]++;
-		}
-		var[0]--;
-	}
+	draw_screen(mlx, mlx->window.h, mlx->window.w, fd);
 	close(fd);
 	exit(0);
 }

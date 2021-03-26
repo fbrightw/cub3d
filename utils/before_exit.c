@@ -38,7 +38,7 @@ void		free_text_spr(t_mlx *mlx, char ch)
 	}
 }
 
-void				free_floor_ceil(t_mlx *mlx)
+void		free_floor_ceil(t_mlx *mlx)
 {
 	int i;
 
@@ -90,5 +90,7 @@ void		write_errors(t_mlx *mlx, int fl)
 		printf("wrong name of map file!!!");
 	if (fl == 9)
 		printf("colors of floor or ceiling is wrong");
+	if (fl == 10)
+		printf("something wrong with argv");
 	exit(0);
 }
