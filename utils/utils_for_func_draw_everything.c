@@ -12,14 +12,29 @@
 
 #include "../includes/cub3d.h"
 
-int			ft_assigning(t_mlx *mlx, double new_x, double new_y)
+int			ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch)
 {
-	if (mlx->map[(int)(new_y)][(int)(new_x)] != '1')
+	int add_x;
+	int add_y;
+
+	add_y = (ch == 'w') ? (5 * sin(mlx->rad)) : (-5 * sin(mlx->rad));
+	add_x = (ch == 'd') ? (5 * cos(mlx->rad)) : (-5 * cos(mlx->rad));
+	if (mlx->map[(int)((new_y * SCALE + add_y) / SCALE)][(int)((new_x * SCALE+ add_x) / SCALE)] != '1')
 	{
-		mlx->hero.y = new_y;
-		mlx->hero.x = new_x;
-		return (1);
-	}
+		if (mlx->map[(int)new_y][(int)new_x] != '1')
+		{
+			// if ((int)new_y > 0 && (int)new_x < (mlx->size - 1))
+			// if (mlx->map[(int)new_y - 1][(int)new_x] != '1'
+			// && mlx->map[(int)new_y][(int)new_x + 1] != '1')
+			{
+				mlx->hero.y = new_y;
+				mlx->hero.x = new_x;
+				return (1);
+			}
+			return (0);
+		}
+		return (0);
+		}
 	return (0);
 }
 
@@ -30,25 +45,25 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	{
 		new_y = mlx->hero.y - (float)(step_pl * sin(mlx->rad));
 		new_x = mlx->hero.x + (float)(step_pl * cos(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y));
+		return (ft_assigning(mlx, new_x, new_y, ch));
 	}
 	if (ch == 'a')
 	{
 		new_x = mlx->hero.x - (float)(step_pl * cos(mlx->rad));
 		new_y = mlx->hero.y - (float)(step_pl * sin(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y));
+		return (ft_assigning(mlx, new_x, new_y, ch));
 	}
 	if (ch == 's')
 	{
 		new_y = mlx->hero.y + (float)(step_pl * sin(mlx->rad));
 		new_x = mlx->hero.x - (float)(step_pl * cos(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y));
+		return (ft_assigning(mlx, new_x, new_y, ch));
 	}
 	if (ch == 'd')
 	{
 		new_x = mlx->hero.x + (float)(step_pl * cos(mlx->rad));
 		new_y = mlx->hero.y + (float)(step_pl * sin(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y));
+		return (ft_assigning(mlx, new_x, new_y, ch));
 	}
 	return (0);
 }

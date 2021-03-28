@@ -17,11 +17,16 @@ void			find_pl(char *line, t_mlx *mlx, int y, char dir)
 	int i;
 
 	i = 0;
-	mlx->hero.y = y + 0.5;
-	while (line[i] != dir)
-		i++;
-	mlx->hero.x = i + 0.5;
-	mlx->hero.dir = dir;
+	if (mlx->hero.y == -1 && mlx->hero.x == -1)
+	{
+		mlx->hero.y = y + 0.5;
+		while (line[i] != dir)
+			i++;
+		mlx->hero.x = i + 0.5;
+		mlx->hero.dir = dir;
+	}
+	else
+		write_errors(mlx, 13);
 }
 
 static void		assiging_zero(int *i, int *index, int *ch, int *count)

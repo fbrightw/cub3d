@@ -96,5 +96,9 @@ void		write_errors(t_mlx *mlx, int fl)
 		printf("Error\nsomething is missing");
 	if (fl == 12)
 		printf("Error\ntoo many commas");
+	if (fl == 13)
+		printf("Error\nWe need just one player!");
+	if (fl == 14)
+		printf("Error\nThere is no corner");
 	exit(0);
 }

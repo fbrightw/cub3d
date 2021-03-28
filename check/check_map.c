@@ -104,12 +104,31 @@ char		**put_frame(t_mlx *mlx, int max_row)
 	return (array);
 }
 
+void		check_for_corner(t_mlx *mlx)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (mlx->map[i])
+	{
+		if (i > 0 && i < mlx->size - 2)
+		{
+			if (ft_strlen(mlx->map[i]) > ft_strlen(mlx->map[i+1]))
+				
+		}
+		i++;
+	}
+}
+
 void		validation(t_mlx *mlx, int j)
 {
 	int		i;
 	char	**array;
 
 	i = 0;
+	check_for_corner(mlx);
 	array = put_frame(mlx, j);
 	floodfill(mlx, array, (int)mlx->hero.y + 1, (int)mlx->hero.x + 1);
 	i = 0;

@@ -21,16 +21,6 @@ void	check_window(t_mlx *mlx, char **textures)
 	i = 0;
 	while (textures[i])
 	{
-		int j = 0;
-		while (textures[i][j])
-		{
-			if (i > 0)
-			{
-				if (!(ft_isdigit(textures[i][j])))
-					write_errors(mlx, 4);
-				j++;
-			}
-		}
 		free(textures[i]);
 		i++;
 	}
@@ -128,7 +118,7 @@ void	check_for_odd_ch(t_mlx *mlx, char *line)
 		{
 			if (!(ft_additional(mlx, line, &index, &ch)))
 			{
-				if ((check_for_odd(mlx, line, "012", &ch)))
+				if ((check_for_odd(mlx, line, "012 ", &ch)))
 					write_errors(mlx, 4);
 			}
 			else

@@ -56,6 +56,25 @@ void		wall_or_sprite(t_mlx *mlx, int i)
 	}
 }
 
+void		draw_player(t_mlx *mlx)
+{
+	double i, angle, x1, y1;
+	int x;
+	int y;
+	double scale1 = mlx->window.w / 100;
+
+	x = mlx->hero.x * scale1;
+	y = mlx->hero.y * scale1;
+
+	for(i = 0; i < 360; i += 0.1)
+	{
+		angle = i;
+		x1 = cos(scale1 * angle * M_PI / 180);
+		y1 = sin(scale1 * angle * M_PI / 180);
+		my_mlx_pixel_put(mlx, x + x1, y + y1, 0x00000000);
+	}
+}
+
 void		ft_draw_map(t_mlx *mlx)
 {
 	int i;
@@ -71,4 +90,5 @@ void		ft_draw_map(t_mlx *mlx)
 		i++;
 		mlx->window.i = 0;
 	}
+	draw_player(mlx);
 }

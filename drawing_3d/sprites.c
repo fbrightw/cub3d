@@ -30,7 +30,8 @@ void	vertical(t_mlx *mlx, int i, double *distances, int x)
 		current_color = *((unsigned int*)(mlx->spr[i]->data)\
 		+ ((int)texture_y * mlx->spr[i]->width + \
 		(int)mlx->texture_x));
-		if (current_color != 0 && distances[((int)(mlx->h_off + x))]\
+		// printf("x= %d y = %f\n", x, mlx->h_off + x);
+		if (current_color != 0 && (int)(mlx->h_off + x) > 0 && distances[((int)(mlx->h_off + x))]\
 		>= mlx->spr[i]->dist)
 			my_mlx_pixel_put(mlx, mlx->h_off + x, vert_off + mlx->i,\
 			current_color);

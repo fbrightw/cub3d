@@ -157,7 +157,7 @@ int					create_trgb(int t, int r, int g, int b);
 void				find_exact_ch(char *s, char *str, int *fl, int *ch);
 int					ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y);
 void				left_right(t_mlx *mlx, int keycode);
-int					ft_assigning(t_mlx *mlx, double new_x, double new_y);
+int					ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch);
 int					close_window(t_mlx *mlx);
 void				ft_draw_map(t_mlx *mlx);
 void				set_mem_to_text(t_mlx *mlx);
