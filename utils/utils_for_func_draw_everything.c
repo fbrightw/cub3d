@@ -14,26 +14,28 @@
 
 int			ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch)
 {
-	int add_x;
-	int add_y;
+	int		add_x;
+	int		add_y;
+	double	rad;
 
-	add_y = (ch == 'w') ? (5 * sin(mlx->rad)) : (-5 * sin(mlx->rad));
-	add_x = (ch == 'd') ? (5 * cos(mlx->rad)) : (-5 * cos(mlx->rad));
-	if (mlx->map[(int)((new_y * SCALE + add_y) / SCALE)][(int)((new_x * SCALE+ add_x) / SCALE)] != '1')
-	{
-		if (mlx->map[(int)new_y][(int)new_x] != '1')
+	rad = (ch == 'a' || ch == 'd') ? (M_PI / 2) : (0);
+	add_y = (ch == 'w') ? (8 * sin(mlx->rad)) : (-8 * sin(mlx->rad));
+	add_x = (ch == 'd') ? (8 * cos(mlx->rad)) : (-8 * cos(mlx->rad));
+	if ((int)new_y > 0 && \
+	(int)new_x < (ft_strlen(mlx->map[(int)new_y]) - 1) && \
+	(int)new_x > -1 && (int)new_y < mlx->size && \
+	mlx->map[(int)((new_y * SCALE + add_y) / SCALE)]\
+	[(int)((new_x * SCALE + add_x) / SCALE)] != '1')
+		if (mlx->map[(int)(new_y * SCALE / SCALE)]\
+		[(int)(new_x * SCALE / SCALE)] != '1' && \
+		mlx->map[(int)new_y][(int)new_x] != ' ')
 		{
-			// if ((int)new_y > 0 && (int)new_x < (mlx->size - 1))
-			// if (mlx->map[(int)new_y - 1][(int)new_x] != '1'
-			// && mlx->map[(int)new_y][(int)new_x + 1] != '1')
 			{
 				mlx->hero.y = new_y;
 				mlx->hero.x = new_x;
 				return (1);
 			}
 			return (0);
-		}
-		return (0);
 		}
 	return (0);
 }
@@ -43,29 +45,25 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	mlx->rad = mlx->hero.main_degree * M_PI / 180;
 	if (ch == 'w')
 	{
-		new_y = mlx->hero.y - (float)(step_pl * sin(mlx->rad));
-		new_x = mlx->hero.x + (float)(step_pl * cos(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y, ch));
+		new_y = mlx->hero.y - (step_pl * sin(mlx->rad));
+		new_x = mlx->hero.x + (step_pl * cos(mlx->rad));
 	}
 	if (ch == 'a')
 	{
-		new_x = mlx->hero.x - (float)(step_pl * cos(mlx->rad));
-		new_y = mlx->hero.y - (float)(step_pl * sin(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y, ch));
+		new_x = mlx->hero.x + (step_pl * cos(mlx->rad - M_PI / 2));
+		new_y = mlx->hero.y + (step_pl * sin(mlx->rad - M_PI / 2));
 	}
 	if (ch == 's')
 	{
-		new_y = mlx->hero.y + (float)(step_pl * sin(mlx->rad));
-		new_x = mlx->hero.x - (float)(step_pl * cos(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y, ch));
+		new_y = mlx->hero.y + (step_pl * sin(mlx->rad));
+		new_x = mlx->hero.x - (step_pl * cos(mlx->rad));
 	}
 	if (ch == 'd')
 	{
-		new_x = mlx->hero.x + (float)(step_pl * cos(mlx->rad));
-		new_y = mlx->hero.y + (float)(step_pl * sin(mlx->rad));
-		return (ft_assigning(mlx, new_x, new_y, ch));
+		new_x = mlx->hero.x - (step_pl * cos(mlx->rad - M_PI / 2));
+		new_y = mlx->hero.y - (step_pl * sin(mlx->rad - M_PI / 2));
 	}
-	return (0);
+	return (ft_assigning(mlx, new_x, new_y, ch));
 }
 
 void		left_right(t_mlx *mlx, int keycode)

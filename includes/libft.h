@@ -71,13 +71,14 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void*), \
 		void (*del)(void*));
-int		ft_get_next_line(int fd, char **line);
-size_t	ft_strlen_modified_gnl(const char *s, int fl1, int *fl2);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
-char	*ft_strdup_gnl(const char *s1);
-char	*ft_strchr_gnl(const void *str, int ch);
-char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
-void	*ft_calloc_gnl(size_t count, size_t size);
-char	*ft_strdup_gnl(const char *s1);
+int					ft_get_next_line(int fd, char **line);
+size_t				ft_strlen_modified_gnl(const char *s, int fl1, int *fl2);
+char				*ft_strjoin_gnl(char const *s1, char const *s2);
+char				*ft_strdup_gnl(const char *s1);
+char				*ft_strchr_gnl(const void *str, int ch);
+char				*ft_substr_gnl(char const *s, unsigned int start, \
+		size_t len);
+void				*ft_calloc_gnl(size_t count, size_t size);
+char				*ft_strdup_gnl(const char *s1);
 
 #endif

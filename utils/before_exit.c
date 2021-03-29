@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-void		free_text_spr(t_mlx *mlx, char ch)
+void	free_text_spr(t_mlx *mlx, char ch)
 {
 	int i;
 
@@ -38,7 +38,7 @@ void		free_text_spr(t_mlx *mlx, char ch)
 	}
 }
 
-void		free_floor_ceil(t_mlx *mlx)
+void	free_floor_ceil(t_mlx *mlx)
 {
 	int i;
 
@@ -64,28 +64,26 @@ void		free_floor_ceil(t_mlx *mlx)
 	}
 }
 
-void		write_errors(t_mlx *mlx, int fl)
+int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 {
-	ft_lstclear(&mlx->lists, free);
-	if (mlx->mem_to_spr == 1)
-		free_text_spr(mlx, 'T');
-	if (mlx->mem_to_text == 1)
-		free_text_spr(mlx, 'S');
-	free_floor_ceil(mlx);
-	if (fl == 1)
-		printf("Error\n with size of window");
-	if (fl == 2)
-		printf("Error\nNegative size of window");
-	if (fl == 3)
-		printf("Error\nWrong name of textures");
-	if (fl == 4)
-		printf("Error\nodd characters");
-	if (fl == 5)
-		printf("Error\nspaces in wrong places");
-	if (fl == 6)
-		printf("Error\nduplicates!");
-	if (fl == 7)
-		printf("Error\nwrong map!!!");
+	if (mlx->NO && mlx->SO && mlx->WE && mlx->EA && mlx->S && mlx->F && mlx->C)
+	{
+		if (!ft_strchr_mod(line, "NEWS120", &index, &ch))
+			write_errors(mlx, 4);
+		if (ft_strchr_mod(line, "FC", &index, &ch))
+			write_errors(mlx, 6);
+		if (strchr_mod(line, "NEWS", &index, &ch))
+			if (!(ft_additional(mlx, line, &index, &ch)))
+				if (mlx->hero.x != -1)
+					write_errors(mlx, 6);
+		if (check_line(mlx, line))
+			return (0);
+	}
+	return (1);
+}
+
+int		write_errors_part2(t_mlx *mlx, int fl)
+{
 	if (fl == 8)
 		printf("Error\nwrong name of map file!!!");
 	if (fl == 9)
@@ -100,5 +98,29 @@ void		write_errors(t_mlx *mlx, int fl)
 		printf("Error\nWe need just one player!");
 	if (fl == 14)
 		printf("Error\nThere is no corner");
+	exit(0);
+}
+
+int		write_errors(t_mlx *mlx, int fl)
+{
+	ft_lstclear(&mlx->lists, free);
+	if (mlx->mem_to_spr == 1)
+		free_text_spr(mlx, 'T');
+	if (mlx->mem_to_text == 1)
+		free_text_spr(mlx, 'S');
+	free_floor_ceil(mlx);
+	if (fl == 1)
+		printf("Error\n Wrong size of window");
+	if (fl == 3)
+		printf("Error\nWrong name of textures");
+	if (fl == 4)
+		printf("Error\nodd characters");
+	if (fl == 5)
+		printf("Error\nspaces in wrong places");
+	if (fl == 6)
+		printf("Error\nduplicates!");
+	if (fl == 7)
+		printf("Error\nwrong map!!!");
+	write_errors_part2(mlx, fl);
 	exit(0);
 }

@@ -23,8 +23,6 @@ void		count_spr(t_mlx *mlx, int j, int *count)
 	i = 0;
 	while (str[i])
 	{
-		// while (str[i] != ch && str[i] != 0)
-		// 	i++;
 		if (str[i] == ch)
 			*count += 1;
 		i++;
@@ -70,7 +68,6 @@ void		find_spr(t_mlx *mlx, int *count)
 	i = 0;
 	spr_n = 0;
 	set_mem_for_spr(mlx, count);
-	printf("%d\n", mlx->spr_count);
 	while (mlx->map[i])
 	{
 		j = 0;
@@ -84,7 +81,7 @@ void		find_spr(t_mlx *mlx, int *count)
 	}
 }
 
-void	change(t_mlx *mlx, int i, int j)
+void		change(t_mlx *mlx, int i, int j)
 {
 	double temp_x;
 	double temp_y;

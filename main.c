@@ -67,7 +67,7 @@ t_list			*ft_reading(t_mlx *mlx, int fd, char *line)
 {
 	t_list	*head;
 	int		i;
-	int ret;
+	int		ret;
 
 	i = 0;
 	head = NULL;

@@ -30,10 +30,8 @@ void	check_window(t_mlx *mlx, char **textures)
 	if (i < 3)
 		write_errors(mlx, 4);
 	mlx_get_screen_size(&width, &height);
-	if (mlx->window.w == 0 || mlx->window.h == 0)
+	if (mlx->window.w <= 0 || mlx->window.h <= 0)
 		write_errors(mlx, 1);
-	if (mlx->window.w < 0 || mlx->window.h < 0)
-		write_errors(mlx, 2);
 	if (mlx->window.w > width || mlx->window.h > height)
 	{
 		mlx->window.w = width;
@@ -41,7 +39,6 @@ void	check_window(t_mlx *mlx, char **textures)
 	}
 	if (mlx->window.w < 80 || mlx->window.h < 50)
 		write_errors(mlx, 1);
-
 }
 
 int		open_images(t_mlx *mlx, char *line)
@@ -69,68 +66,6 @@ int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 		if (line[*index] == 'A')
 			write_errors(mlx, 6);
 	return (0);
-}
-
-int		check_for_odd(t_mlx *mlx, char *line, char *right, int *ch)
-{
-	int i;
-	int j;
-	int k;
-
-	i = 0;
-	j = 0;
-	while (line[j])
-	{
-		i = 0;
-		while (i < ft_strlen(right))
-		{
-			if (line[j] == right[i])
-			{
-				j++;
-				break;
-			}
-			else
-				i++;
-		}
-		if (i > (ft_strlen(right) - 1))
-		{
-			if (line[j] == *ch)
-				j++;
-			else
-				return (1);
-		}
-	}
-	if (*line == 0 && j == 0)
-		write_errors(mlx, 10);
-	return (0);
-}
-
-void	check_for_odd_ch(t_mlx *mlx, char *line)
-{
-	int index;
-	int ch;
-
-	index = 0;
-	ch = 0;
-	if (*line)
-	{
-		if (ft_strchr_mod(line, "NEWS", &index, &ch))
-		{
-			if (!(ft_additional(mlx, line, &index, &ch)))
-			{
-				if ((check_for_odd(mlx, line, "012 ", &ch)))
-					write_errors(mlx, 4);
-			}
-			else
-				write_errors(mlx, 6);
-		}
-		else if (check_for_odd(mlx, line, "012 ", &ch))
-			write_errors(mlx, 4);
-		if (!(ft_strchr_mod(line, "120 ", &index, &ch)))
-			write_errors(mlx, 4);
-	}
-	else
-		write_errors(mlx, 7);
 }
 
 int		check_line(t_mlx *mlx, char *line)

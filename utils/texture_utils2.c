@@ -96,7 +96,7 @@ void		ft_assigning_zeroes(int *index, int *ch, t_mlx *mlx)
 
 int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 {
-	int		index;
+	int	index;
 	int	ch;
 
 	index = 0;

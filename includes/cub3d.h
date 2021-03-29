@@ -1,13 +1,10 @@
 #ifndef CUB3D_H
 # define CUB3D_H
-
-#include <mlx.h>
-#include <stdio.h>
-#include <math.h>
-#include "libft.h"
-
+# include <mlx.h>
+# include <stdio.h>
+# include <math.h>
 # define SCALE 32
-# define step_pl 0.5
+# define step_pl 0.3
 
 typedef struct				s_wall_texture
 {
@@ -135,6 +132,11 @@ void				count_spr(t_mlx *mlx, int j, int *count);
 void				find_spr(t_mlx *mlx, int *count);
 void				validation(t_mlx *mlx, int j);
 void				floodfill(t_mlx *mlx, char **array, int x, int y);
+int					check_odd_in_str(t_mlx *mlx, char *line, char *right, int *ch);
+void				check_for_odd_ch(t_mlx *mlx, char *line);
+void				check_for_odd_ch_in_res(t_mlx *mlx, char **textures);
+void				count_comma(t_mlx *mlx, char *line);
+int					check_before_exit(t_mlx *mlx, char *line, int index, int ch);
 void				ft_start(t_mlx *mlx, int argc, char **argv);
 void				ft_texturees(t_mlx *mlx);
 void				ft_raycasting(t_mlx *mlx, int color);
@@ -152,6 +154,7 @@ void				sort_sprites(t_mlx *mlx);
 void				drawing_sprites(t_mlx *mlx, double *distances, int i);
 int					fill_texts(t_mlx *mlx, char *line, int *ch);
 int					ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch);
+int					ceiling(t_mlx *mlx, char *line);
 void				set_mem_for_spr(t_mlx *mlx, int *count);
 int					create_trgb(int t, int r, int g, int b);
 void				find_exact_ch(char *s, char *str, int *fl, int *ch);
@@ -165,7 +168,7 @@ void				my_mlx_pixel_put(t_mlx *mlx,int x, int y, int color);
 void				screenshot(t_mlx *mlx);
 int					open_images(t_mlx *mlx, char *line);
 void				mlx_get_screen_size(int *width, int *height);
-void				write_errors(t_mlx *mlx, int fl);
+int					write_errors(t_mlx *mlx, int fl);
 int					check_line(t_mlx *mlx, char *line);
 void				change(t_mlx *mlx, int i, int j);
 void				free_map(t_mlx *mlx);
