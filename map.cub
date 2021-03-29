@@ -1,16 +1,16 @@
 R 800 600
-NO ./xpm_files/Bart.xpm
-EA ./xpm_files/ASLEEP.xpm
-WE ./xpm_files/LIZII.xpm
-SO ./xpm_files/DOPE.xpm
+no ./xpm_files/Bart.xpm
+ea ./xpm_files/ASLEEP.xpm
+we ./xpm_files/LIZII.xpm
+so ./xpm_files/DOPE.xpm
 
 S ./xpm_files/liza_simpson_saks.xpm
 
 
 
 
-F 20,110,12
-C 20,110,120
+f 20,110,12
+c 20,110,120
 
 
 

@@ -122,7 +122,7 @@ int		find_exact_spr(t_mlx *mlx)
 	while (i < mlx->spr_count)
 	{
 		mlx->spr[i]->dist = hypot(mlx->hero.x - mlx->spr[i]->x, \
-		mlx->hero.y - mlx->spr[i]->y) * SCALE;
+		mlx->hero.y - mlx->spr[i]->y) * scale;
 		i++;
 	}
 	return (i);

@@ -22,8 +22,8 @@ void		draw_floor(t_mlx *mlx, int slice_n, int *k)
 	while (i < floor)
 	{
 		my_mlx_pixel_put(mlx, slice_n, *k,\
-		create_trgb(0, ft_atoi(mlx->F[0]),\
-		ft_atoi(mlx->F[1]), ft_atoi(mlx->F[2])));
+		create_trgb(0, ft_atoi(mlx->f[0]),\
+		ft_atoi(mlx->f[1]), ft_atoi(mlx->f[2])));
 		i++;
 		*k += 1;
 	}
@@ -39,8 +39,8 @@ void		draw_ceil(t_mlx *mlx, int slice_n, int *k)
 	while (i < ceil)
 	{
 		my_mlx_pixel_put(mlx, slice_n, *k, \
-		create_trgb(0, ft_atoi(mlx->C[0]), \
-		ft_atoi(mlx->C[1]), ft_atoi(mlx->C[2])));
+		create_trgb(0, ft_atoi(mlx->c[0]), \
+		ft_atoi(mlx->c[1]), ft_atoi(mlx->c[2])));
 		i++;
 		*k += 1;
 	}
@@ -84,18 +84,18 @@ void		drawing_3d(t_mlx *mlx, int slice_n, int fl, int i_text)
 	mlx->texture_x = 0;
 	if (fl == 0)
 	{
-		dist = mlx->ray.distX;
-		mlx->texture_x = (int)(((mlx->ray.distx_y - mlx->ray.HitXy * SCALE)\
-		/ SCALE) * mlx->text[i_text]->width - 0.0000000000001);
+		dist = mlx->ray.distx;
+		mlx->texture_x = (int)(((mlx->ray.distx_y - mlx->ray.hitx_y * scale)\
+		/ scale) * mlx->text[i_text]->width - 0.0000000000001);
 	}
 	else
 	{
-		dist = mlx->ray.distY;
-		mlx->texture_x = (int)(((mlx->ray.disty_x - mlx->ray.HitYx * SCALE)\
-		/ SCALE) * mlx->text[i_text]->width - 0.0000000000001);
+		dist = mlx->ray.disty;
+		mlx->texture_x = (int)(((mlx->ray.disty_x - mlx->ray.hity_x * scale)\
+		/ scale) * mlx->text[i_text]->width - 0.0000000000001);
 	}
 	mlx->dist_to_proj = (mlx->window.w / 2) / tan(M_PI / 6);
-	mlx->height_3d = SCALE / (dist * fabs(cos((mlx->hero.main_degree \
+	mlx->height_3d = scale / (dist * fabs(cos((mlx->hero.main_degree \
 	- mlx->hero.fov) * M_PI / 180))) * mlx->dist_to_proj;
 	draw_ceil(mlx, slice_n, &k);
 	draw_wall(mlx, slice_n, &k, i_text);

@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 13:20:27 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/21 13:20:27 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/21 13:20:30 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -75,9 +75,9 @@ void			zeros_to_var_in_mlx(t_mlx *mlx)
 	mlx->size = 0;
 	mlx->q_lines = 0;
 	mlx->window.i = 0;
-	mlx->ray.distY = 0;
-	mlx->ray.HitYx = 0;
-	mlx->ray.HitYy = 0;
+	mlx->ray.disty = 0;
+	mlx->ray.hity_x = 0;
+	mlx->ray.hity_y = 0;
 	mlx->hero.x = -1;
 	mlx->hero.y = -1;
 	mlx->i = 0;

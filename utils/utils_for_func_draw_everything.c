@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 14:18:44 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/23 14:18:44 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/23 14:18:45 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -24,10 +24,10 @@ int			ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch)
 	if ((int)new_y > 0 && \
 	(int)new_x < (ft_strlen(mlx->map[(int)new_y]) - 1) && \
 	(int)new_x > -1 && (int)new_y < mlx->size && \
-	mlx->map[(int)((new_y * SCALE + add_y) / SCALE)]\
-	[(int)((new_x * SCALE + add_x) / SCALE)] != '1')
-		if (mlx->map[(int)(new_y * SCALE / SCALE)]\
-		[(int)(new_x * SCALE / SCALE)] != '1' && \
+	mlx->map[(int)((new_y * scale + add_y) / scale)]\
+	[(int)((new_x * scale + add_x) / scale)] != '1')
+		if (mlx->map[(int)(new_y * scale / scale)]\
+		[(int)(new_x * scale / scale)] != '1' && \
 		mlx->map[(int)new_y][(int)new_x] != ' ')
 		{
 			{

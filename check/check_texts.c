@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 15:12:32 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/23 15:12:32 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/23 15:12:38 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -56,7 +56,7 @@ int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 	if (*ch == 'N')
 		if (line[*index] == 'O')
 			write_errors(mlx, 6);
-	if (*ch == 'S')
+	if (*ch == 's')
 		if (line[*index] == 'O')
 			write_errors(mlx, 6);
 	if (*ch == 'W')
@@ -70,7 +70,7 @@ int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 
 int		check_line(t_mlx *mlx, char *line)
 {
-	if (mlx->NO && mlx->SO && mlx->WE && mlx->EA && mlx->F && mlx->C && mlx->S)
+	if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->f && mlx->c && mlx->s)
 	{
 		while (*line == ' ')
 			line++;
@@ -85,16 +85,16 @@ void	check_textures(t_mlx *mlx, char *line, char *fl_of_side)
 {
 	if (!(open_images(mlx, line)))
 		write_errors(mlx, 3);
-	if (!ft_strncmp(fl_of_side, "NO", 2))
-		if (mlx->NO != NULL)
+	if (!ft_strncmp(fl_of_side, "no", 2))
+		if (mlx->no != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "SO", 2))
-		if (mlx->SO != NULL)
+	if (!ft_strncmp(fl_of_side, "so", 2))
+		if (mlx->so != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "WE", 2))
-		if (mlx->WE != NULL)
+	if (!ft_strncmp(fl_of_side, "we", 2))
+		if (mlx->we != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "EA", 2))
-		if (mlx->EA != NULL)
+	if (!ft_strncmp(fl_of_side, "ea", 2))
+		if (mlx->ea != NULL)
 			write_errors(mlx, 6);
 }

@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 15:38:12 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/29 15:38:12 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/29 15:38:13 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 
 int			ceiling(t_mlx *mlx, char *line)
 {
-	if (!(mlx->C))
+	if (!(mlx->c))
 	{
 		line++;
 		if (*line == ' ')
@@ -22,8 +22,8 @@ int			ceiling(t_mlx *mlx, char *line)
 			while (*line == ' ')
 				line++;
 			count_comma(mlx, line);
-			mlx->C = ft_split(line, ',');
-			check_floor_ceil(mlx, mlx->C);
+			mlx->c = ft_split(line, ',');
+			check_floor_ceil(mlx, mlx->c);
 			return (1);
 		}
 		return (0);
@@ -34,9 +34,9 @@ int			ceiling(t_mlx *mlx, char *line)
 
 int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
 {
-	if (*ch == 'F')
+	if (*ch == 'f')
 	{
-		if (!(mlx->F))
+		if (!(mlx->f))
 		{
 			line++;
 			if (*line == ' ')
@@ -44,15 +44,15 @@ int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
 				while (*line == ' ')
 					line++;
 				count_comma(mlx, line);
-				mlx->F = ft_split(line, ',');
-				check_floor_ceil(mlx, mlx->F);
+				mlx->f = ft_split(line, ',');
+				check_floor_ceil(mlx, mlx->f);
 				return (1);
 			}
 			return (0);
 		}
 		write_errors(mlx, 6);
 	}
-	else if (*ch == 'C')
+	else if (*ch == 'c')
 		return (ceiling(mlx, line));
 	return (0);
 }

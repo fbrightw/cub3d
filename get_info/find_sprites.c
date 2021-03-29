@@ -54,7 +54,7 @@ void		init_spr_coord(t_mlx *mlx, int *spr_n, int i, int j)
 	diff_pl_sp_y = mlx->hero.y - mlx->spr[*spr_n]->y;
 	mlx->spr[*spr_n]->x = j + 0.5;
 	mlx->spr[*spr_n]->y = i + 0.5;
-	mlx->spr[*spr_n]->dist = hypot(diff_pl_sp_x, diff_pl_sp_y) * SCALE;
+	mlx->spr[*spr_n]->dist = hypot(diff_pl_sp_x, diff_pl_sp_y) * scale;
 	*spr_n += 1;
 }
 

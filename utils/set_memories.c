@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 14:27:47 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/23 14:27:47 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/23 14:27:48 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -37,13 +37,13 @@ void		ft_texturees(t_mlx *mlx)
 	while (i < 4)
 	{
 		if (i == 0)
-			mlx->text[i]->path = mlx->NO;
+			mlx->text[i]->path = mlx->no;
 		if (i == 1)
-			mlx->text[i]->path = mlx->SO;
+			mlx->text[i]->path = mlx->so;
 		if (i == 2)
-			mlx->text[i]->path = mlx->WE;
+			mlx->text[i]->path = mlx->we;
 		if (i == 3)
-			mlx->text[i]->path = mlx->EA;
+			mlx->text[i]->path = mlx->ea;
 		mlx->text[i]->img = mlx_xpm_file_to_image(mlx->ptr, \
 		mlx->text[i]->path, &mlx->text[i]->width, &mlx->text[i]->height);
 		mlx->text[i]->data = (unsigned int*)mlx_get_data_addr(\
@@ -60,8 +60,8 @@ void		xpm_to_spr(t_mlx *mlx)
 	i = 0;
 	while (i < mlx->spr_count)
 	{
-		mlx->spr[i]->path = mlx->S;
-		mlx->spr[i]->img = mlx_xpm_file_to_image(mlx->ptr, mlx->S,\
+		mlx->spr[i]->path = mlx->s;
+		mlx->spr[i]->img = mlx_xpm_file_to_image(mlx->ptr, mlx->s,\
 		&mlx->spr[i]->width, &mlx->spr[i]->height);
 		mlx->spr[i]->data = (unsigned int*)mlx_get_data_addr(mlx->spr[i]->img,\
 		&mlx->spr[i]->bpp, &mlx->spr[i]->line_len, &mlx->spr[i]->end);

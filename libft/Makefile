@@ -5,28 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/11/03 13:08:47 by fbrightw          #+#    #+#              #
+#    created: 2020/11/03 13:08:47 by fbrightw          #+#    #+#              #
 #    Updated: 2020/11/13 14:00:28 by fbrightw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .SILENT:
 
-CC	=	gcc 
-	
+cc	=	gcc
+
 NAME	=	libft.a
-	
-CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS	:=	$(wildcard ft_*.c) 
+cFLAGS	=	-Wall -wextra -werror
 
-#SRCS_B	:=	$(wildcard ft_lst*.c)
+SRcS	:=	$(wildcard ft_*.c)
 
-#SRCS	:=	$(filter-out $(SRCS_B),$(SRCS))
+#SRcS_B	:=	$(wildcard ft_lst*.c)
 
-OBJS	:=	$(SRCS:.c=.o)
+#SRcS	:=	$(filter-out $(SRcS_B),$(SRcS))
 
-#OBJS_B	:=	$(SRCS_B:.c=.o)
+OBJS	:=	$(SRcS:.c=.o)
+
+#OBJS_B	:=	$(SRcS_B:.c=.o)
 
 RM	=	rm	-f
 
@@ -36,12 +36,12 @@ $(NAME):	$(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	$(cc) $(cFLAGS) -c $< -o $(<:.c=.o)
 
-clean: 
+clean:
 	$(RM)	$(OBJS)
 
-fclean:	clean 
+fclean:	clean
 	$(RM)	$(NAME)
 
 re:	clean	all

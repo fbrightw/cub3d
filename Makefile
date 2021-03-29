@@ -1,16 +1,16 @@
-CC		=	gcc
+cc		=	gcc
 
 NAME	=	cub3D
 
-# CFLAGS	=	-g
+# cfLAGS	=	-g
 
-LIBFT	=	libft
+LIBfT	=	libft
 
 HDRS	=	includes
 
-SRCS	:=	$(wildcard drawing_3d/*.c get_info/*.c map_rays/*.c utils/*.c check/*.c main.c)
+SRcS	:=	$(wildcard drawing_3d/*.c get_info/*.c map_rays/*.c utils/*.c check/*.c main.c)
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS	=	$(SRcS:.c=.o)
 
 RM		=	rm -f
 
@@ -19,20 +19,20 @@ MAP		=	map.cub
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-		make -C $(LIBFT)
+		make -c $(LIBfT)
 		cp libft/libft.a ./$(NAME)
-		$(CC) ./libft/libft.a get_info/*.m -g -Imlx -lmlx -framework OpenGl -framework AppKit -O2 $(SRCS) -o $(NAME) -fsanitize=address
+		$(cc) ./libft/libft.a get_info/*.m -g -Imlx -lmlx -framework OpenGl -framework AppKit -O2 $(SRcS) -o $(NAME) -fsanitize=address
 
 .c.o:
-		$(CC) -I $(HDRS) -c $< -o $(<:.c=.o)
+		$(cc) -I $(HDRS) -c $< -o $(<:.c=.o)
 
 clean:
 		$(RM) $(OBJS)
-		make clean -C $(LIBFT)
+		make clean -c $(LIBfT)
 
 fclean:	clean
 		$(RM) $(NAME)
-		make fclean -C $(LIBFT)
+		make fclean -c $(LIBfT)
 		rm -f libft.a
 		rm -f $(NAME)
 

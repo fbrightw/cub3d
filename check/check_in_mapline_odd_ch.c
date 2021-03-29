@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/29 15:32:53 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/29 15:32:53 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/29 15:32:55 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ void	check_for_odd_ch(t_mlx *mlx, char *line)
 	ch = 0;
 	if (*line)
 	{
-		if (ft_strchr_mod(line, "NEWS", &index, &ch))
+		if (ft_strchr_mod(line, "NEWs", &index, &ch))
 		{
 			if (!(ft_additional(mlx, line, &index, &ch)))
 			{

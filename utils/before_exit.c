@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/23 14:29:20 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/23 14:29:20 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/23 14:29:21 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ void	free_text_spr(t_mlx *mlx, char ch)
 		}
 		free(mlx->text);
 	}
-	else if (ch == 'S')
+	else if (ch == 's')
 	{
 		i = 0;
 		while (i < mlx->spr_count)
@@ -43,36 +43,36 @@ void	free_floor_ceil(t_mlx *mlx)
 	int i;
 
 	i = 0;
-	if (mlx->F)
+	if (mlx->f)
 	{
-		while (mlx->F[i])
+		while (mlx->f[i])
 		{
-			free(mlx->F[i]);
+			free(mlx->f[i]);
 			i++;
 		}
-		free(mlx->F);
+		free(mlx->f);
 	}
 	i = 0;
-	if (mlx->C)
+	if (mlx->c)
 	{
-		while (mlx->C[i])
+		while (mlx->c[i])
 		{
-			free(mlx->C[i]);
+			free(mlx->c[i]);
 			i++;
 		}
-		free(mlx->C);
+		free(mlx->c);
 	}
 }
 
 int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 {
-	if (mlx->NO && mlx->SO && mlx->WE && mlx->EA && mlx->S && mlx->F && mlx->C)
+	if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->s && mlx->f && mlx->c)
 	{
-		if (!ft_strchr_mod(line, "NEWS120", &index, &ch))
+		if (!ft_strchr_mod(line, "NEWs120", &index, &ch))
 			write_errors(mlx, 4);
-		if (ft_strchr_mod(line, "FC", &index, &ch))
+		if (ft_strchr_mod(line, "fc", &index, &ch))
 			write_errors(mlx, 6);
-		if (strchr_mod(line, "NEWS", &index, &ch))
+		if (strchr_mod(line, "NEWs", &index, &ch))
 			if (!(ft_additional(mlx, line, &index, &ch)))
 				if (mlx->hero.x != -1)
 					write_errors(mlx, 6);
@@ -95,7 +95,7 @@ int		write_errors_part2(t_mlx *mlx, int fl)
 	if (fl == 12)
 		printf("Error\ntoo many commas");
 	if (fl == 13)
-		printf("Error\nWe need just one player!");
+		printf("Error\nwe need just one player!");
 	if (fl == 14)
 		printf("Error\nThere is no corner");
 	exit(0);
@@ -107,7 +107,7 @@ int		write_errors(t_mlx *mlx, int fl)
 	if (mlx->mem_to_spr == 1)
 		free_text_spr(mlx, 'T');
 	if (mlx->mem_to_text == 1)
-		free_text_spr(mlx, 'S');
+		free_text_spr(mlx, 's');
 	free_floor_ceil(mlx);
 	if (fl == 1)
 		printf("Error\n Wrong size of window");

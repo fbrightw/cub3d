@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/21 16:39:16 by fbrightw          #+#    #+#             */
+/*   created: 2021/03/21 16:39:16 by fbrightw          #+#    #+#             */
 /*   Updated: 2021/03/21 16:39:17 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -61,7 +61,7 @@ int			key_press(int keycode, t_mlx *mlx)
 		ch = 'd';
 	if (!ft_wasd(mlx, ch, new_x, new_y))
 		left_right(mlx, keycode);
-	draw_everything(mlx, mlx->map, 0x00FF00FF);
+	draw_everything(mlx, mlx->map, 0x00ff00ff);
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.img, 0, 0);
 	return (0);
 }
@@ -69,12 +69,12 @@ int			key_press(int keycode, t_mlx *mlx)
 void		ft_create_game(t_mlx *mlx)
 {
 	mlx->ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->ptr, mlx->window.w, mlx->window.h, "CUB");
+	mlx->win = mlx_new_window(mlx->ptr, mlx->window.w, mlx->window.h, "cUB");
 	mlx->img.img = mlx_new_image(mlx->ptr, mlx->window.w, mlx->window.h);
 	mlx->img.data = mlx_get_data_addr(mlx->img.img, \
 	&mlx->img.bpp, &mlx->img.l_len, &mlx->img.end);
 	ft_texturees(mlx);
-	draw_everything(mlx, mlx->map, 0x00FF00FF);
+	draw_everything(mlx, mlx->map, 0x00ff00ff);
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.img, 0, 0);
 }
 

@@ -1,9 +1,10 @@
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef cUB3D_H
+# define cUB3D_H
 # include <mlx.h>
 # include <stdio.h>
 # include <math.h>
-# define SCALE 32
+# include "libft.h"
+# define scale 32
 # define step_pl 0.3
 
 typedef struct				s_wall_texture
@@ -64,18 +65,18 @@ typedef struct				s_hero
 
 typedef struct				s_ray
 {
-	int				HitXx;
-	int				HitXy;
-	int				HitYx;
-	int				HitYy;
-	double			distX;
-	double			distY;
+	int				hitx_x;
+	int				hitx_y;
+	int				hity_x;
+	int				hity_y;
+	double			distx;
+	double			disty;
 	double			distx_x;
 	double			distx_y;
 	double			disty_x;
 	double			disty_y;
 	int				color;
-	double			Rad;
+	double			rad;
 }							t_ray;
 
 
@@ -106,13 +107,13 @@ typedef struct					s_mlx
 	char			**map;
 	int				begin_map;
 	int				q_lines;
-	char			*NO;
-	char			*SO;
-	char			*WE;
-	char			*EA;
-	char			*S;
-	char 			**F;
-	char			**C;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	char			*s;
+	char 			**f;
+	char			**c;
 }								t_mlx;
 
 int					main(int argc, char **argv);
