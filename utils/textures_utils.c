@@ -15,10 +15,10 @@
 int			fill_texts(t_mlx *mlx, char *line, int *ch)
 {
 	if (*ch == 'N')
-		return (fill_certain_texture(mlx, line, "no"));
-	else if (*ch == 's')
+		return (fill_certain_texture(mlx, line, "NO"));
+	else if (*ch == 'S')
 	{
-		if (!(fill_certain_texture(mlx, line, "so")))
+		if (!(fill_certain_texture(mlx, line, "SO")))
 		{
 			if (!mlx->s)
 			{
@@ -26,18 +26,19 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 				{
 					while (*line == ' ')
 						line++;
+					check_textures(mlx, line, " ");
 					mlx->s = ft_strchr(line, '.');
 					return (1);
 				}
 			}
-			write_errors(mlx, 10);
+			write_errors(mlx, 6);
 		}
 		return (1);
 	}
 	else if (*ch == 'W')
-		return (fill_certain_texture(mlx, line, "we"));
+		return (fill_certain_texture(mlx, line, "WE"));
 	else if (*ch == 'E')
-		return (fill_certain_texture(mlx, line, "ea"));
+		return (fill_certain_texture(mlx, line, "EA"));
 	return (0);
 }
 
@@ -56,24 +57,27 @@ int			screen_res_newsc(t_mlx *mlx, char *line, char **textures)
 	int ch;
 
 	ch = 0;
-	if (mlx->window.w == -1 && mlx->window.h == -1)
+	if (*line == 'R')
 	{
-		if ((ft_strnstr(line, "R ", 2)))
+		if ((ft_strnstr(line, "R ", 2)) && \
+		mlx->window.w == -1 && mlx->window.h == -1)
 		{
 			textures = ft_split(line, ' ');
-			check_for_odd_ch_in_res(mlx, textures);
-			if (mlx->window.w == -1 && mlx->window.h == -1)
+			if (!(check_for_odd_ch_in_res(mlx, textures)))
 			{
-				mlx->window.w = ft_atoi(textures[1]);
-				mlx->window.h = ft_atoi(textures[2]);
-				check_window(mlx, textures);
-				return (1);
+				if (mlx->window.w == -1 && mlx->window.h == -1)
+				{
+					mlx->window.w = ft_atoi(textures[1]);
+					mlx->window.h = ft_atoi(textures[2]);
+					// check_window(mlx, textures);
+					return (1);
+				}
+				write_errors(mlx, 6);
 			}
-			write_errors(mlx, 6);
 		}
-		write_errors(mlx, 4);
+		(mlx->window.w == -1) ? (write_errors(mlx, 4)) : (write_errors(mlx, 6));
 	}
-	if (strchr_mod(line, "NEWsfc", &index, &ch))
+	if (strchr_mod(line, "NEWSFC", &index, &ch))
 		return (assigning_texts(mlx, line, &index, &ch));
 	return (0);
 }
@@ -95,14 +99,14 @@ int			find_textures(t_mlx *mlx, char *line)
 	}
 	if (check_before_exit(mlx, line, index, ch))
 		if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->s)
-			if (strchr_mod(line, "NEWs", &index, &ch))
+			if (strchr_mod(line, "NEWS", &index, &ch))
 			{
 				index += 1;
 				if (!(ft_additional(mlx, line, &index, &ch)) \
 				&& mlx->hero.x != -1)
 					write_errors(mlx, 6);
 			}
-	if (!ft_strchr_mod(line, "NEWsfc120", &index, &ch))
+	if (!ft_strchr_mod(line, "NEWSFC120", &index, &ch))
 		write_errors(mlx, 4);
 	return (screen_res_newsc(mlx, line, textures));
 }

@@ -12,21 +12,15 @@
 
 .SILENT:
 
-cc	=	gcc
+CC	=	gcc
 
 NAME	=	libft.a
 
-cFLAGS	=	-Wall -wextra -werror
+CFLAGS	=	-Wall -Wextra -Werror
 
-SRcS	:=	$(wildcard ft_*.c)
+SRCS	:=	$(wildcard ft_*.c)
 
-#SRcS_B	:=	$(wildcard ft_lst*.c)
-
-#SRcS	:=	$(filter-out $(SRcS_B),$(SRcS))
-
-OBJS	:=	$(SRcS:.c=.o)
-
-#OBJS_B	:=	$(SRcS_B:.c=.o)
+OBJS	:=	$(SRCS:.c=.o)
 
 RM	=	rm	-f
 
@@ -36,7 +30,7 @@ $(NAME):	$(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 .c.o:
-	$(cc) $(cFLAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 clean:
 	$(RM)	$(OBJS)

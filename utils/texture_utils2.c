@@ -14,22 +14,22 @@
 
 int			init_texts(t_mlx *mlx, char *line, char *fl_of_side)
 {
-	if (!ft_strncmp(fl_of_side, "no", 2))
+	if (!ft_strncmp(fl_of_side, "NO", 2))
 	{
 		mlx->no = ft_strchr(line, '.');
 		return (1);
 	}
-	else if (!ft_strncmp(fl_of_side, "so", 2))
+	else if (!ft_strncmp(fl_of_side, "SO", 2))
 	{
 		mlx->so = ft_strchr(line, '.');
 		return (1);
 	}
-	else if (!ft_strncmp(fl_of_side, "we", 2))
+	else if (!ft_strncmp(fl_of_side, "WE", 2))
 	{
 		mlx->we = ft_strchr(line, '.');
 		return (1);
 	}
-	else if (!ft_strncmp(fl_of_side, "ea", 2))
+	else if (!ft_strncmp(fl_of_side, "EA", 2))
 	{
 		mlx->ea = ft_strchr(line, '.');
 		return (1);
@@ -114,7 +114,7 @@ int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 		}
 		write_errors(mlx, 4);
 	}
-	if (strchr_mod(line, "NEWSfc", &index, &ch))
+	if (strchr_mod(line, "NEWSFC", &index, &ch))
 	{
 		index += 1;
 		if (ft_additional(mlx, line, &index, &ch))

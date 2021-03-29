@@ -68,14 +68,17 @@ int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 {
 	if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->s && mlx->f && mlx->c)
 	{
-		if (!ft_strchr_mod(line, "NEWs120", &index, &ch))
+		if (!ft_strchr_mod(line, "NEWS120 ", &index, &ch))
 			write_errors(mlx, 4);
-		if (ft_strchr_mod(line, "fc", &index, &ch))
+		if (ft_strchr_mod(line, "FC", &index, &ch))
 			write_errors(mlx, 6);
-		if (strchr_mod(line, "NEWs", &index, &ch))
+		if (strchr_mod(line, "NEWS", &index, &ch))
+		{
+			index += 1;
 			if (!(ft_additional(mlx, line, &index, &ch)))
 				if (mlx->hero.x != -1)
 					write_errors(mlx, 6);
+		}
 		if (check_line(mlx, line))
 			return (0);
 	}
@@ -107,10 +110,10 @@ int		write_errors(t_mlx *mlx, int fl)
 	if (mlx->mem_to_spr == 1)
 		free_text_spr(mlx, 'T');
 	if (mlx->mem_to_text == 1)
-		free_text_spr(mlx, 's');
+		free_text_spr(mlx, 'S');
 	free_floor_ceil(mlx);
 	if (fl == 1)
-		printf("Error\n Wrong size of window");
+		printf("Error\nWrong size of window");
 	if (fl == 3)
 		printf("Error\nWrong name of textures");
 	if (fl == 4)

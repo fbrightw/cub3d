@@ -19,7 +19,7 @@ void	vertical(t_mlx *mlx, int i, double *distances, int x)
 	int			current_color;
 	double		scr_size;
 
-	scr_size = (float)mlx->window.w / mlx->spr[i]->dist;
+	scr_size = (float)mlx->window.w / mlx->spr[i]->dist * 32;
 	vert_off = mlx->window.h / 2 - scr_size / 2;
 	texture_y = 0;
 	mlx->i = 0;
@@ -51,7 +51,7 @@ void	draw_vert_of_spr(t_mlx *mlx, float deg_pl_spr, double *distances, int i)
 	x = 0;
 	texture_y = 0;
 	mlx->texture_x = 0;
-	scr_size = (float)mlx->window.w / mlx->spr[i]->dist;
+	scr_size = (float)mlx->window.w / mlx->spr[i]->dist * 32;
 	h_off = (mlx->hero.main_degree * (M_PI / 180) - deg_pl_spr) / (M_PI / 3) \
 	* (mlx->window.w) + (mlx->window.w / 2) - (scr_size / 2);
 	while (x < (int)scr_size)

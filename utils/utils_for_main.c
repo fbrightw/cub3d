@@ -95,6 +95,10 @@ void			floodfill(t_mlx *mlx, char **array, int x, int y)
 		write_errors(mlx, 7);
 	array[x][y] = '8';
 	floodfill(mlx, array, x + 1, y);
+	floodfill(mlx, array, x + 1, y + 1);
+	floodfill(mlx, array, x - 1, y + 1);
+	floodfill(mlx, array, x + 1, y - 1);
+	floodfill(mlx, array, x - 1, y - 1);
 	floodfill(mlx, array, x, y + 1);
 	floodfill(mlx, array, x - 1, y);
 	floodfill(mlx, array, x, y - 1);

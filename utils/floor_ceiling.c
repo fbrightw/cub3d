@@ -34,7 +34,7 @@ int			ceiling(t_mlx *mlx, char *line)
 
 int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
 {
-	if (*ch == 'f')
+	if (*ch == 'F')
 	{
 		if (!(mlx->f))
 		{
@@ -52,7 +52,7 @@ int			ft_floor_ceil(t_mlx *mlx, char *line, int *index, int *ch)
 		}
 		write_errors(mlx, 6);
 	}
-	else if (*ch == 'c')
+	else if (*ch == 'C')
 		return (ceiling(mlx, line));
 	return (0);
 }

@@ -14,8 +14,8 @@
 
 void	check_window(t_mlx *mlx, char **textures)
 {
-	int height;
-	int width;
+	// int height;
+	// int width;
 	int i;
 
 	i = 0;
@@ -29,14 +29,14 @@ void	check_window(t_mlx *mlx, char **textures)
 		write_errors(mlx, 4);
 	if (i < 3)
 		write_errors(mlx, 4);
-	mlx_get_screen_size(&width, &height);
+	// mlx_get_screen_size(&width, &height);
 	if (mlx->window.w <= 0 || mlx->window.h <= 0)
 		write_errors(mlx, 1);
-	if (mlx->window.w > width || mlx->window.h > height)
-	{
-		mlx->window.w = width;
-		mlx->window.h = height;
-	}
+	// if (mlx->window.w > width || mlx->window.h > height)
+	// {
+	// 	mlx->window.w = width;
+	// 	mlx->window.h = height;
+	// }
 	if (mlx->window.w < 80 || mlx->window.h < 50)
 		write_errors(mlx, 1);
 }
@@ -56,7 +56,7 @@ int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 	if (*ch == 'N')
 		if (line[*index] == 'O')
 			write_errors(mlx, 6);
-	if (*ch == 's')
+	if (*ch == 'S')
 		if (line[*index] == 'O')
 			write_errors(mlx, 6);
 	if (*ch == 'W')
@@ -85,16 +85,16 @@ void	check_textures(t_mlx *mlx, char *line, char *fl_of_side)
 {
 	if (!(open_images(mlx, line)))
 		write_errors(mlx, 3);
-	if (!ft_strncmp(fl_of_side, "no", 2))
+	if (!ft_strncmp(fl_of_side, "NO", 2))
 		if (mlx->no != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "so", 2))
+	if (!ft_strncmp(fl_of_side, "SO", 2))
 		if (mlx->so != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "we", 2))
+	if (!ft_strncmp(fl_of_side, "WE", 2))
 		if (mlx->we != NULL)
 			write_errors(mlx, 6);
-	if (!ft_strncmp(fl_of_side, "ea", 2))
+	if (!ft_strncmp(fl_of_side, "EA", 2))
 		if (mlx->ea != NULL)
 			write_errors(mlx, 6);
 }

@@ -49,7 +49,7 @@ void	check_for_odd_ch(t_mlx *mlx, char *line)
 	ch = 0;
 	if (*line)
 	{
-		if (ft_strchr_mod(line, "NEWs", &index, &ch))
+		if (ft_strchr_mod(line, "NEWS", &index, &ch))
 		{
 			if (!(ft_additional(mlx, line, &index, &ch)))
 			{
@@ -68,13 +68,21 @@ void	check_for_odd_ch(t_mlx *mlx, char *line)
 		write_errors(mlx, 7);
 }
 
-void		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
+int		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
 {
 	int i;
 	int j;
+	int width;
+	int height;
 
 	i = 0;
 	j = 0;
+	while (textures[i])
+		i++;
+	if (i > 3 || i < 3)
+		write_errors(mlx, 1);
+	i = 0;
+	mlx_get_screen_size(&width, &height);
 	while (textures[i])
 	{
 		j = 0;
@@ -86,9 +94,17 @@ void		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
 					write_errors(mlx, 4);
 				j++;
 			}
+			if (j > 4 && i == 1)
+				mlx->window.w = width;
+			if (j > 4 && i == 2)
+				mlx->window.h = height;
 		}
 		i++;
 	}
+	if (mlx->window.w == -1 && mlx->window.h == -1)
+		return (0);
+	else
+		return (1);
 }
 
 void		count_comma(t_mlx *mlx, char *line)

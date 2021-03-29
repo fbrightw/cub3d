@@ -135,7 +135,7 @@ void				validation(t_mlx *mlx, int j);
 void				floodfill(t_mlx *mlx, char **array, int x, int y);
 int					check_odd_in_str(t_mlx *mlx, char *line, char *right, int *ch);
 void				check_for_odd_ch(t_mlx *mlx, char *line);
-void				check_for_odd_ch_in_res(t_mlx *mlx, char **textures);
+int					check_for_odd_ch_in_res(t_mlx *mlx, char **textures);
 void				count_comma(t_mlx *mlx, char *line);
 int					check_before_exit(t_mlx *mlx, char *line, int index, int ch);
 void				ft_start(t_mlx *mlx, int argc, char **argv);
