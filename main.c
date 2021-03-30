@@ -51,7 +51,7 @@ int				map_filling(t_mlx *mlx, t_list *head)
 		{
 			mlx->map[i - mlx->q_lines] = head->content;
 			check_line(mlx, mlx->map[i - mlx->q_lines]);
-			if (ft_strchr_mod(mlx->map[i - mlx->q_lines], "NEWs", &index, &ch))
+			if (ft_strchr_mod(mlx->map[i - mlx->q_lines], "NEWS", &index, &ch))
 				find_pl(mlx->map[i - mlx->q_lines], mlx, i - mlx->q_lines, ch);
 			count_spr(mlx, i - mlx->q_lines, &count);
 		}

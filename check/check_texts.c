@@ -12,35 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-void	check_window(t_mlx *mlx, char **textures)
-{
-	// int height;
-	// int width;
-	int i;
-
-	i = 0;
-	while (textures[i])
-	{
-		free(textures[i]);
-		i++;
-	}
-	free(textures);
-	if (i > 3)
-		write_errors(mlx, 4);
-	if (i < 3)
-		write_errors(mlx, 4);
-	// mlx_get_screen_size(&width, &height);
-	if (mlx->window.w <= 0 || mlx->window.h <= 0)
-		write_errors(mlx, 1);
-	// if (mlx->window.w > width || mlx->window.h > height)
-	// {
-	// 	mlx->window.w = width;
-	// 	mlx->window.h = height;
-	// }
-	if (mlx->window.w < 80 || mlx->window.h < 50)
-		write_errors(mlx, 1);
-}
-
 int		open_images(t_mlx *mlx, char *line)
 {
 	int fd;

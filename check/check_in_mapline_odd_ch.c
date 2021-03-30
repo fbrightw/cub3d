@@ -40,7 +40,7 @@ int		check_odd_in_str(t_mlx *mlx, char *line, char *right, int *ch)
 	return (*line == 0 && j == 0) ? write_errors(mlx, 10) : 0;
 }
 
-void	check_for_odd_ch(t_mlx *mlx, char *line)
+int		check_for_odd_ch(t_mlx *mlx, char *line)
 {
 	int index;
 	int ch;
@@ -52,20 +52,18 @@ void	check_for_odd_ch(t_mlx *mlx, char *line)
 		if (ft_strchr_mod(line, "NEWS", &index, &ch))
 		{
 			if (!(ft_additional(mlx, line, &index, &ch)))
-			{
 				if ((check_odd_in_str(mlx, line, "012 ", &ch)))
-					write_errors(mlx, 4);
-			}
-			else
-				write_errors(mlx, 6);
+					return (write_errors(mlx, 4));
+			return (0);
 		}
 		else if (check_odd_in_str(mlx, line, "012 ", &ch))
-			write_errors(mlx, 4);
+			return (write_errors(mlx, 4));
 		if (!(ft_strchr_mod(line, "120 ", &index, &ch)))
-			write_errors(mlx, 4);
+			return (write_errors(mlx, 4));
+		return (0);
 	}
 	else
-		write_errors(mlx, 7);
+		return (write_errors(mlx, 7));
 }
 
 int		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
@@ -76,35 +74,27 @@ int		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
 	int height;
 
 	i = 0;
-	j = 0;
-	while (textures[i])
-		i++;
-	if (i > 3 || i < 3)
-		write_errors(mlx, 1);
-	i = 0;
+	check_quantity(mlx, textures);
 	mlx_get_screen_size(&width, &height);
 	while (textures[i])
 	{
 		j = 0;
-		if (i > 0)
+		while (textures[i][j])
 		{
-			while (textures[i][j])
+			if (!(ft_isdigit(textures[i][j])))
 			{
-				if (!(ft_isdigit(textures[i][j])))
-					write_errors(mlx, 4);
-				j++;
+				free_text(textures);
+				write_errors(mlx, 4);
 			}
-			if (j > 4 && i == 1)
-				mlx->window.w = width;
-			if (j > 4 && i == 2)
-				mlx->window.h = height;
+			j++;
 		}
+		if (j > 4 && i == 0)
+			mlx->window.w = width;
+		if (j > 4 && i == 1)
+			mlx->window.h = height;
 		i++;
 	}
-	if (mlx->window.w == -1 && mlx->window.h == -1)
-		return (0);
-	else
-		return (1);
+	return (assigning_w_h(mlx, textures, width, height));
 }
 
 void		count_comma(t_mlx *mlx, char *line)

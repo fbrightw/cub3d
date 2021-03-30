@@ -69,7 +69,7 @@ int			key_press(int keycode, t_mlx *mlx)
 void		ft_create_game(t_mlx *mlx)
 {
 	mlx->ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->ptr, mlx->window.w, mlx->window.h, "cUB");
+	mlx->win = mlx_new_window(mlx->ptr, mlx->window.w, mlx->window.h, "CUB");
 	mlx->img.img = mlx_new_image(mlx->ptr, mlx->window.w, mlx->window.h);
 	mlx->img.data = mlx_get_data_addr(mlx->img.img, \
 	&mlx->img.bpp, &mlx->img.l_len, &mlx->img.end);

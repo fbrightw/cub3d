@@ -79,8 +79,9 @@ int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 				if (mlx->hero.x != -1)
 					write_errors(mlx, 6);
 		}
-		if (check_line(mlx, line))
-			return (0);
+		while (*line == ' ')
+			line++;
+		return (check_for_odd_ch(mlx, line));
 	}
 	return (1);
 }
