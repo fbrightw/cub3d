@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2021/03/22 14:20:45 by fbrightw          #+#    #+#             */
-/*   Updated: 2021/03/22 14:20:47 by fbrightw         ###   ########.fr       */
+/*   Created: 2021/03/30 15:38:18 by fbrightw          #+#    #+#             */
+/*   Updated: 2021/03/30 15:38:18 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	ft_find_hor(t_mlx *mlx, double tang)
 	while (mlx->map[mlx->ray.hity_y][mlx->ray.hity_x] != '1')
 	{
 		if (mlx->hero.fov <= 180.0 && mlx->hero.fov >= 0)
-			dist_y -= scale;
+			dist_y -= SCALE;
 		else
-			dist_y += scale;
+			dist_y += SCALE;
 		if (mlx->hero.fov < 90.0 || mlx->hero.fov > 270.0)
-			dist_x += scale / tang;
+			dist_x += SCALE / tang;
 		else
-			dist_x -= scale / tang;
+			dist_x -= SCALE / tang;
 		ft_seg_sit(mlx, &dist_x, &dist_y);
-		mlx->ray.hity_x = (int)(dist_x / scale);
-		mlx->ray.hity_y = (int)(dist_y / scale);
+		mlx->ray.hity_x = (int)(dist_x / SCALE);
+		mlx->ray.hity_y = (int)(dist_y / SCALE);
 	}
 	find_dist(mlx, &dist_x, &dist_y, 1);
 }
@@ -48,16 +48,16 @@ void	ft_find_vert(t_mlx *mlx, double tang)
 	while (mlx->map[mlx->ray.hitx_y][mlx->ray.hitx_x] != '1')
 	{
 		if (mlx->hero.fov <= 90.0 || mlx->hero.fov >= 270.0)
-			dist_x += scale;
+			dist_x += SCALE;
 		else
-			dist_x -= scale;
+			dist_x -= SCALE;
 		if (mlx->hero.fov <= 180.0 && mlx->hero.fov > 0)
-			dist_y -= scale * tang;
+			dist_y -= SCALE * tang;
 		else
-			dist_y += scale * tang;
+			dist_y += SCALE * tang;
 		ft_seg_sit(mlx, &dist_x, &dist_y);
-		mlx->ray.hitx_x = (int)(dist_x / scale);
-		mlx->ray.hitx_y = (int)(dist_y / scale);
+		mlx->ray.hitx_x = (int)(dist_x / SCALE);
+		mlx->ray.hitx_y = (int)(dist_y / SCALE);
 	}
 	find_dist(mlx, &dist_x, &dist_y, 0);
 }
@@ -88,8 +88,8 @@ void	ft_draw_rays(t_mlx *mlx, int slice_n, double distances[mlx->window.w])
 	double precision;
 
 	tang = 0;
-	mlx->hero.posx = mlx->hero.x * scale;
-	mlx->hero.posy = mlx->hero.y * scale;
+	mlx->hero.posx = mlx->hero.x * SCALE;
+	mlx->hero.posy = mlx->hero.y * SCALE;
 	precision = (fabs)(mlx->hero.fov - 270);
 	if ((int)(fabs)(cos(mlx->rad)) == 0 && fabs(precision) < 0.000001)
 		tang = 1;

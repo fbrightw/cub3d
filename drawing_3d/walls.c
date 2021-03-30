@@ -85,17 +85,17 @@ void		drawing_3d(t_mlx *mlx, int slice_n, int fl, int i_text)
 	if (fl == 0)
 	{
 		dist = mlx->ray.distx;
-		mlx->texture_x = (int)(((mlx->ray.distx_y - mlx->ray.hitx_y * scale)\
-		/ scale) * mlx->text[i_text]->width - 0.0000000000001);
+		mlx->texture_x = (int)(((mlx->ray.distx_y - mlx->ray.hitx_y * SCALE)\
+		/ SCALE) * mlx->text[i_text]->width - 0.0000000000001);
 	}
 	else
 	{
 		dist = mlx->ray.disty;
-		mlx->texture_x = (int)(((mlx->ray.disty_x - mlx->ray.hity_x * scale)\
-		/ scale) * mlx->text[i_text]->width - 0.0000000000001);
+		mlx->texture_x = (int)(((mlx->ray.disty_x - mlx->ray.hity_x * SCALE)\
+		/ SCALE) * mlx->text[i_text]->width - 0.0000000000001);
 	}
 	mlx->dist_to_proj = (mlx->window.w / 2) / tan(M_PI / 6);
-	mlx->height_3d = scale / (dist * fabs(cos((mlx->hero.main_degree \
+	mlx->height_3d = SCALE / (dist * fabs(cos((mlx->hero.main_degree \
 	- mlx->hero.fov) * M_PI / 180))) * mlx->dist_to_proj;
 	draw_ceil(mlx, slice_n, &k);
 	draw_wall(mlx, slice_n, &k, i_text);

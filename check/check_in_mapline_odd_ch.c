@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2021/03/29 15:32:53 by fbrightw          #+#    #+#             */
-/*   Updated: 2021/03/29 15:32:55 by fbrightw         ###   ########.fr       */
+/*   Created: 2021/03/30 15:39:55 by fbrightw          #+#    #+#             */
+/*   Updated: 2021/03/30 15:39:56 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,29 @@ int		check_for_odd_ch_in_res(t_mlx *mlx, char **textures)
 	int width;
 	int height;
 
-	i = 0;
+	i = -1;
 	check_quantity(mlx, textures);
 	mlx_get_screen_size(&width, &height);
-	while (textures[i])
+	while (textures[++i])
 	{
-		j = 0;
-		while (textures[i][j])
+		j = -1;
+		while (textures[i][++j])
 		{
 			if (!(ft_isdigit(textures[i][j])))
 			{
 				free_text(textures);
 				write_errors(mlx, 4);
 			}
-			j++;
 		}
 		if (j > 4 && i == 0)
 			mlx->window.w = width;
 		if (j > 4 && i == 1)
 			mlx->window.h = height;
-		i++;
 	}
 	return (assigning_w_h(mlx, textures, width, height));
 }
 
-void		count_comma(t_mlx *mlx, char *line)
+void	count_comma(t_mlx *mlx, char *line)
 {
 	int i;
 	int count;

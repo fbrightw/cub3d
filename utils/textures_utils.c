@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2021/03/23 14:25:49 by fbrightw          #+#    #+#             */
-/*   Updated: 2021/03/23 14:25:50 by fbrightw         ###   ########.fr       */
+/*   Created: 2021/03/30 15:31:26 by fbrightw          #+#    #+#             */
+/*   Updated: 2021/03/30 15:31:28 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 		{
 			if (!mlx->s)
 			{
-				if (*(++line) == ' ')
-				{
-					while (*line == ' ')
-						line++;
-					check_textures(mlx, line, " ");
-					mlx->s = ft_strchr(line, '.');
-					return (1);
-				}
+				while (*(++line) == ' ')
+					line++;
+				check_textures(mlx, line, " ");
+				mlx->s = ft_strchr(line, '.');
+				return (1);
 			}
 			write_errors(mlx, 6);
 		}

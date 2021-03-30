@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbrightw <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2021/03/21 16:50:06 by fbrightw          #+#    #+#             */
-/*   Updated: 2021/03/21 16:50:07 by fbrightw         ###   ########.fr       */
+/*   Created: 2021/03/30 15:37:11 by fbrightw          #+#    #+#             */
+/*   Updated: 2021/03/30 15:37:12 by fbrightw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side)
 	double	positiv_cos;
 	int		fl_text;
 
-	mlx->ray.hitx_y = (int)(mlx->hero.y * scale / scale);
-	mlx->ray.hitx_x = (int)(mlx->hero.x * scale / scale);
+	mlx->ray.hitx_y = (int)(mlx->hero.y * SCALE / SCALE);
+	mlx->ray.hitx_x = (int)(mlx->hero.x * SCALE / SCALE);
 	positiv_cos = (fabs)(cos(mlx->rad));
-	sidedistx = mlx->hero.x * scale;
+	sidedistx = mlx->hero.x * SCALE;
 	fl_text = (side == 'E') ? 3 : 2;
 	while (mlx->map[mlx->ray.hitx_y][mlx->ray.hitx_x] != '1')
 	{
@@ -30,11 +30,11 @@ void	ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side)
 			sidedistx += 1;
 		else
 			sidedistx -= 1;
-		mlx->ray.hitx_x = (int)(sidedistx / scale);
+		mlx->ray.hitx_x = (int)(sidedistx / SCALE);
 	}
 	deltax = fabs(mlx->hero.posx - sidedistx);
 	mlx->ray.distx = deltax;
-	mlx->ray.distx_y = mlx->hero.y * scale;
+	mlx->ray.distx_y = mlx->hero.y * SCALE;
 	distances[slice_numb] = mlx->ray.distx;
 	drawing_3d(mlx, slice_numb, 0, fl_text);
 }
@@ -47,11 +47,11 @@ void	ft_ns(t_mlx *mlx, int slice_numb, double *distances, char side)
 	double	diff;
 	int		fl_text;
 
-	mlx->ray.hity_y = (int)(mlx->hero.y * scale / scale);
-	mlx->ray.hity_x = (int)(mlx->hero.x * scale / scale);
+	mlx->ray.hity_y = (int)(mlx->hero.y * SCALE / SCALE);
+	mlx->ray.hity_x = (int)(mlx->hero.x * SCALE / SCALE);
 	diff = mlx->hero.fov - 270;
 	positiv_cos = (fabs)(cos(mlx->rad));
-	sidedisty = mlx->hero.y * scale;
+	sidedisty = mlx->hero.y * SCALE;
 	fl_text = (side == 'N') ? 0 : 1;
 	while (mlx->map[mlx->ray.hity_y][mlx->ray.hity_x] != '1')
 	{
@@ -59,11 +59,11 @@ void	ft_ns(t_mlx *mlx, int slice_numb, double *distances, char side)
 			sidedisty += 1;
 		else
 			sidedisty -= 1;
-		mlx->ray.hity_y = (int)(sidedisty / scale);
+		mlx->ray.hity_y = (int)(sidedisty / SCALE);
 	}
 	distances[slice_numb] = mlx->ray.disty;
 	deltay = fabs(mlx->hero.posy - sidedisty);
-	mlx->ray.disty_x = mlx->hero.x * scale;
+	mlx->ray.disty_x = mlx->hero.x * SCALE;
 	mlx->ray.disty = deltay;
 	drawing_3d(mlx, slice_numb, 1, fl_text);
 }
