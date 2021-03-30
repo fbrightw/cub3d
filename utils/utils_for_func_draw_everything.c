@@ -12,30 +12,49 @@
 
 #include "../includes/cub3d.h"
 
+void		give_val(t_mlx *mlx, double *add_y, double *add_x, char ch)
+{
+	if (ch == 'w')
+	{
+		*add_y = - 8 * sin(mlx->rad);
+		*add_x = 8 * cos(mlx->rad);
+	}
+	if (ch == 'a')
+	{
+		*add_y = 8 * sin(mlx->rad);
+		*add_x = 8 * cos(mlx->rad);
+	}
+	if (ch == 's')
+	{
+		*add_y = 8 * sin(mlx->rad);
+		*add_x = - 8 * cos(mlx->rad);
+	}
+	if (ch == 'd')
+	{
+		*add_y = - 8 * sin(mlx->rad);
+		*add_x = - 8 * cos(mlx->rad);
+	}
+}
 int			ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch)
 {
-	int		add_x;
-	int		add_y;
+	double		add_x;
+	double		add_y;
 	double	rad;
 
 	rad = (ch == 'a' || ch == 'd') ? (M_PI / 2) : (0);
-	add_y = (ch == 'w') ? (8 * sin(mlx->rad)) : (-8 * sin(mlx->rad));
-	add_x = (ch == 'd') ? (8 * cos(mlx->rad)) : (-8 * cos(mlx->rad));
+	give_val(mlx, &add_y, &add_x, ch);
 	if ((int)new_y > 0 && \
 	(int)new_x < (ft_strlen(mlx->map[(int)new_y]) - 1) && \
 	(int)new_x > -1 && (int)new_y < mlx->size && \
 	mlx->map[(int)((new_y * SCALE + add_y) / SCALE)]\
 	[(int)((new_x * SCALE + add_x) / SCALE)] != '1')
-		if (mlx->map[(int)(new_y * SCALE / SCALE)]\
-		[(int)(new_x * SCALE / SCALE)] != '1' && \
+		if (mlx->map[(int)new_y]\
+		[(int)new_x] != '1' && \
 		mlx->map[(int)new_y][(int)new_x] != ' ')
 		{
-			{
-				mlx->hero.y = new_y;
-				mlx->hero.x = new_x;
-				return (1);
-			}
-			return (0);
+			mlx->hero.y = new_y;
+			mlx->hero.x = new_x;
+			return (1);
 		}
 	return (0);
 }
@@ -50,8 +69,8 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	}
 	if (ch == 'a')
 	{
-		new_x = mlx->hero.x + (STEP * cos(mlx->rad - M_PI / 2));
-		new_y = mlx->hero.y + (STEP * sin(mlx->rad - M_PI / 2));
+		new_x = mlx->hero.x + (STEP * cos(M_PI / 2 - mlx->rad));
+		new_y = mlx->hero.y + (STEP * sin(M_PI / 2 - mlx->rad));
 	}
 	if (ch == 's')
 	{
@@ -60,8 +79,8 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	}
 	if (ch == 'd')
 	{
-		new_x = mlx->hero.x - (STEP * cos(mlx->rad - M_PI / 2));
-		new_y = mlx->hero.y - (STEP * sin(mlx->rad - M_PI / 2));
+		new_x = mlx->hero.x - (STEP * cos(M_PI / 2 - mlx->rad));
+		new_y = mlx->hero.y - (STEP * sin(M_PI / 2 - mlx->rad));
 	}
 	return (ft_assigning(mlx, new_x, new_y, ch));
 }

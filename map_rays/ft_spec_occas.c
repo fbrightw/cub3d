@@ -19,6 +19,7 @@ void	ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side)
 	double	positiv_cos;
 	int		fl_text;
 
+	printf("spec %f %d\n", mlx->hero.fov, slice_numb);
 	mlx->ray.hitx_y = (int)(mlx->hero.y * SCALE / SCALE);
 	mlx->ray.hitx_x = (int)(mlx->hero.x * SCALE / SCALE);
 	positiv_cos = (fabs)(cos(mlx->rad));
@@ -34,6 +35,7 @@ void	ft_ew(t_mlx *mlx, int slice_numb, double *distances, char side)
 	}
 	deltax = fabs(mlx->hero.posx - sidedistx);
 	mlx->ray.distx = deltax;
+	printf(" ew %f %d\n", mlx->ray.distx / SCALE, slice_numb);
 	mlx->ray.distx_y = mlx->hero.y * SCALE;
 	distances[slice_numb] = mlx->ray.distx;
 	drawing_3d(mlx, slice_numb, 0, fl_text);

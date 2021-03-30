@@ -92,7 +92,7 @@ void	ft_draw_rays(t_mlx *mlx, int slice_n, double distances[mlx->window.w])
 	mlx->hero.posy = mlx->hero.y * SCALE;
 	precision = (fabs)(mlx->hero.fov - 270);
 	if ((int)(fabs)(cos(mlx->rad)) == 0 && fabs(precision) < 0.000001)
-		tang = 1;
+		tang = 0.00000001;
 	else
 		tang = (fabs)(tan(mlx->rad));
 	ft_find_hor(mlx, tang);
@@ -119,9 +119,13 @@ void	ft_raycasting(t_mlx *mlx, int color)
 		mlx->rad = mlx->hero.fov * M_PI / 180;
 		if ((int)(fabs(sin(mlx->rad))) == 0 && fabs(mlx->hero.fov) < 0.000001)
 			ft_ew(mlx, i, distances, 'E');
-		if ((int)(fabs(sin(mlx->rad))) == 0 && \
+		else if ((int)(fabs(sin(mlx->rad))) == 0 && \
 		fabs(mlx->hero.fov - 180) < 0.000001)
 			ft_ew(mlx, i, distances, 'W');
+		else if ((int)(fabs(cos(mlx->rad))) == 0 && fabs(mlx->hero.fov - 270) < 0.000001)
+			ft_ns(mlx, i, distances, 'S');
+		else if ((int)(fabs(cos(mlx->rad))) == 0 && fabs(mlx->hero.fov - 90) < 0.000001)
+			ft_ns(mlx, i, distances, 'N');
 		else
 			ft_draw_rays(mlx, i, distances);
 		mlx->hero.fov -= ((float)60 / mlx->window.w);
