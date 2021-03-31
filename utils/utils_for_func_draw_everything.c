@@ -16,29 +16,30 @@ void		give_val(t_mlx *mlx, double *add_y, double *add_x, char ch)
 {
 	if (ch == 'w')
 	{
-		*add_y = - 8 * sin(mlx->rad);
+		*add_y = -8 * sin(mlx->rad);
 		*add_x = 8 * cos(mlx->rad);
 	}
 	if (ch == 'a')
 	{
-		*add_y = 8 * sin(mlx->rad);
-		*add_x = 8 * cos(mlx->rad);
+		*add_y = 8 * sin(mlx->rad - M_PI / 2);
+		*add_x = 8 * cos(mlx->rad - M_PI / 2);
 	}
 	if (ch == 's')
 	{
 		*add_y = 8 * sin(mlx->rad);
-		*add_x = - 8 * cos(mlx->rad);
+		*add_x = -8 * cos(mlx->rad);
 	}
 	if (ch == 'd')
 	{
-		*add_y = - 8 * sin(mlx->rad);
-		*add_x = - 8 * cos(mlx->rad);
+		*add_y = -8 * sin(mlx->rad - M_PI / 2);
+		*add_x = -8 * cos(mlx->rad - M_PI / 2);
 	}
 }
+
 int			ft_assigning(t_mlx *mlx, double new_x, double new_y, char ch)
 {
-	double		add_x;
-	double		add_y;
+	double	add_x;
+	double	add_y;
 	double	rad;
 
 	rad = (ch == 'a' || ch == 'd') ? (M_PI / 2) : (0);
@@ -69,8 +70,8 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	}
 	if (ch == 'a')
 	{
-		new_x = mlx->hero.x + (STEP * cos(M_PI / 2 - mlx->rad));
-		new_y = mlx->hero.y + (STEP * sin(M_PI / 2 - mlx->rad));
+		new_x = mlx->hero.x - (STEP * (cos(mlx->rad - M_PI / 2)));
+		new_y = mlx->hero.y + (STEP * (sin(mlx->rad - M_PI / 2)));
 	}
 	if (ch == 's')
 	{
@@ -79,8 +80,8 @@ int			ft_wasd(t_mlx *mlx, char ch, double new_x, double new_y)
 	}
 	if (ch == 'd')
 	{
-		new_x = mlx->hero.x - (STEP * cos(M_PI / 2 - mlx->rad));
-		new_y = mlx->hero.y - (STEP * sin(M_PI / 2 - mlx->rad));
+		new_x = mlx->hero.x + (STEP * (cos(mlx->rad - M_PI / 2)));
+		new_y = mlx->hero.y - (STEP * (sin(mlx->rad - M_PI / 2)));
 	}
 	return (ft_assigning(mlx, new_x, new_y, ch));
 }
