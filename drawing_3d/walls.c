@@ -94,12 +94,18 @@ void		drawing_3d(t_mlx *mlx, int slice_n, int fl, int i_text)
 		mlx->texture_x = (int)(((mlx->ray.disty_x - mlx->ray.hity_x * SCALE)\
 		/ SCALE) * mlx->text[i_text]->width - 0.0000000000001);
 	}
+	if (mlx->texture_x < 0)
+		mlx->texture_x = 0;
 	mlx->dist_to_proj = (mlx->window.w / 2) / tan(M_PI / 6);
 	mlx->height_3d = (double)SCALE /
 	 (dist * fabs(cos((mlx->hero.main_degree - mlx->hero.fov) * M_PI / 180)))
 	* (double)mlx->dist_to_proj;
 	// if (slice_n == mlx->window.w / 2)
-	// 	printf("%d %f %d %f %f %d\n", mlx->height_3d, mlx->hero.fov, slice_n, cos((mlx->hero.main_degree - mlx->hero.fov) * M_PI / 180), dist, mlx->dist_to_proj);
+	// 	printf("now %f %d %f %f\n", mlx->texture_x, mlx->height_3d, dist, mlx->hero.y);
+	// if (slice_n == mlx->window.w / 2 - 1)
+	// 	printf("before %f %d %f %f\n", mlx->texture_x, mlx->height_3d, dist, mlx->hero.y);
+	// if (slice_n == mlx->window.w / 2 + 1)
+	// 	printf("after %f %d %f %f\n", mlx->texture_x, mlx->height_3d, dist, mlx->hero.y);
 	draw_ceil(mlx, slice_n, &k);
 	draw_wall(mlx, slice_n, &k, i_text);
 	draw_floor(mlx, slice_n, &k);
