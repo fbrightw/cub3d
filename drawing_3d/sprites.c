@@ -44,7 +44,6 @@ void	draw_vert_of_spr(t_mlx *mlx, float deg_pl_spr, double *distances, int i)
 {
 	double	texture_y;
 	double	scr_size;
-	int		current_color;
 	double	h_off;
 	int		x;
 

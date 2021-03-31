@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/cub3d.h"
 
 char	*ft_strchr(const void *str, int ch)
 {

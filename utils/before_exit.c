@@ -72,7 +72,7 @@ int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 			write_errors(mlx, 4);
 		if (ft_strchr_mod(line, "FC", &index, &ch))
 			write_errors(mlx, 6);
-		if (strchr_mod(line, "NEWS", &index, &ch))
+		if (strchr_mod(line, "NEWS", &ch))
 		{
 			index += 1;
 			if (!(ft_additional(mlx, line, &index, &ch)))
@@ -86,7 +86,7 @@ int		check_before_exit(t_mlx *mlx, char *line, int index, int ch)
 	return (1);
 }
 
-int		write_errors_part2(t_mlx *mlx, int fl)
+int		write_errors_part2(int fl)
 {
 	if (fl == 8)
 		printf("Error\nwrong name of map file!!!");
@@ -125,6 +125,6 @@ int		write_errors(t_mlx *mlx, int fl)
 		printf("Error\nduplicates!");
 	if (fl == 7)
 		printf("Error\nwrong map!!!");
-	write_errors_part2(mlx, fl);
+	write_errors_part2(fl);
 	exit(0);
 }

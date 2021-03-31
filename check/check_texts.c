@@ -12,7 +12,7 @@
 
 #include "../includes/cub3d.h"
 
-int		open_images(t_mlx *mlx, char *line)
+int		open_images(char *line)
 {
 	int fd;
 
@@ -54,7 +54,7 @@ int		check_line(t_mlx *mlx, char *line)
 
 void	check_textures(t_mlx *mlx, char *line, char *fl_of_side)
 {
-	if (!(open_images(mlx, line)))
+	if (!(open_images(line)))
 		write_errors(mlx, 3);
 	if (!ft_strncmp(fl_of_side, "NO", 2))
 		if (mlx->no != NULL)

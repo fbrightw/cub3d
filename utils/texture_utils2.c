@@ -80,18 +80,21 @@ char		*spaces_or_end(t_mlx *mlx, char *line)
 	return (line);
 }
 
-void		ft_assigning_zeroes(int *index, int *ch, t_mlx *mlx)
+char		**ft_assigning_zeroes(int *index, int *ch, t_mlx *mlx)
 {
 	*index = 0;
 	*ch = 0;
-	if (!(open_images(mlx, mlx->no)))
+	if (!(open_images(mlx->no)))
 		mlx->no = NULL;
-	if (!(open_images(mlx, mlx->so)))
+	if (!(open_images(mlx->so)))
 		mlx->so = NULL;
-	if (!(open_images(mlx, mlx->we)))
+	if (!(open_images(mlx->we)))
 		mlx->we = NULL;
-	if (!(open_images(mlx, mlx->ea)))
+	if (!(open_images(mlx->ea)))
 		mlx->ea = NULL;
+	if (!(open_images(mlx->s)))
+		mlx->s = NULL;
+	return (NULL);
 }
 
 int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
@@ -114,7 +117,7 @@ int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 		}
 		write_errors(mlx, 4);
 	}
-	if (strchr_mod(line, "NEWSFC", &index, &ch))
+	if (strchr_mod(line, "NEWSFC", &ch))
 	{
 		index += 1;
 		if (ft_additional(mlx, line, &index, &ch))

@@ -102,7 +102,7 @@ void	ft_draw_rays(t_mlx *mlx, int slice_n, double distances[mlx->window.w])
 	cub3d(mlx, slice_n, distances);
 }
 
-void	ft_raycasting(t_mlx *mlx, int color)
+void	ft_raycasting(t_mlx *mlx)
 {
 	int		i;
 	double	distances[mlx->window.w];

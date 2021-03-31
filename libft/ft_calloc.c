@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/cub3d.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

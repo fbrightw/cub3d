@@ -23,7 +23,7 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 			if (!mlx->s)
 			{
 				while (*(++line) == ' ')
-					line++;
+					;
 				check_textures(mlx, line, " ");
 				mlx->s = ft_strchr(line, '.');
 				return (1);
@@ -39,18 +39,17 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 	return (0);
 }
 
-int			assigning_texts(t_mlx *mlx, char *line, int *index, int *ch)
+int			assigning_texts(t_mlx *mlx, char *line, int *ch)
 {
 	if (fill_texts(mlx, line, ch))
 		return (1);
-	if (ft_floor_ceil(mlx, line, index, ch))
+	if (ft_floor_ceil(mlx, line, ch))
 		return (1);
 	return (0);
 }
 
 int			screen_res_newsc(t_mlx *mlx, char *line, char **textures)
 {
-	int index;
 	int ch;
 
 	ch = 0;
@@ -66,8 +65,8 @@ int			screen_res_newsc(t_mlx *mlx, char *line, char **textures)
 		}
 		(mlx->window.w == -1) ? (write_errors(mlx, 4)) : (write_errors(mlx, 6));
 	}
-	if (strchr_mod(line, "NEWSFC", &index, &ch))
-		return (assigning_texts(mlx, line, &index, &ch));
+	if (strchr_mod(line, "NEWSFC", &ch))
+		return (assigning_texts(mlx, line, &ch));
 	return (0);
 }
 
@@ -77,7 +76,7 @@ int			find_textures(t_mlx *mlx, char *line)
 	int		index;
 	int		ch;
 
-	ft_assigning_zeroes(&index, &ch, mlx);
+	textures = ft_assigning_zeroes(&index, &ch, mlx);
 	if (*line != 0)
 		while (*line == ' ')
 			line++;
@@ -88,7 +87,7 @@ int			find_textures(t_mlx *mlx, char *line)
 	}
 	if (check_before_exit(mlx, line, index, ch))
 		if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->s)
-			if (strchr_mod(line, "NEWS", &index, &ch))
+			if (strchr_mod(line, "NEWS", &ch))
 			{
 				index += 1;
 				if (!(ft_additional(mlx, line, &index, &ch)) \

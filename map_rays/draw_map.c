@@ -22,9 +22,9 @@ int			close_window(t_mlx *mlx)
 	exit(0);
 }
 
-void		draw_everything(t_mlx *mlx, char **map, int color)
+void		draw_everything(t_mlx *mlx)
 {
-	ft_raycasting(mlx, color);
+	ft_raycasting(mlx);
 	ft_draw_map(mlx);
 	if (mlx->argc == 3)
 	{
@@ -43,10 +43,10 @@ int			key_press(int keycode, t_mlx *mlx)
 	double	new_y;
 	double	new_x;
 
-	mlx->fl = 0;
-	mlx->rad = mlx->hero.main_degree * M_PI / 180;
+	new_x = 0;
+	new_y = 0;
 	mlx_clear_window(mlx->ptr, mlx->win);
-	draw_everything(mlx, mlx->map, 0x00000000);
+	draw_everything(mlx);
 	if (keycode == 123)
 		ch = 'l';
 	if (keycode == 124)
@@ -61,7 +61,7 @@ int			key_press(int keycode, t_mlx *mlx)
 		ch = 'd';
 	if (!ft_wasd(mlx, ch, new_x, new_y))
 		left_right(mlx, keycode);
-	draw_everything(mlx, mlx->map, 0x00ff00ff);
+	draw_everything(mlx);
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.img, 0, 0);
 	return (0);
 }
@@ -74,7 +74,7 @@ void		ft_create_game(t_mlx *mlx)
 	mlx->img.data = mlx_get_data_addr(mlx->img.img, \
 	&mlx->img.bpp, &mlx->img.l_len, &mlx->img.end);
 	ft_texturees(mlx);
-	draw_everything(mlx, mlx->map, 0x00ff00ff);
+	draw_everything(mlx);
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.img, 0, 0);
 }
 

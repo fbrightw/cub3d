@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/cub3d.h"
 
 void	*ft_memset(void *dst, int a, size_t n)
 {

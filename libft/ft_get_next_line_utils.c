@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/cub3d.h"
 
 size_t	ft_strlen_modified_gnl(const char *s, int fl1, int *fl2)
 {

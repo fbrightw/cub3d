@@ -46,6 +46,8 @@ void		ft_texturees(t_mlx *mlx)
 			mlx->text[i]->path = mlx->ea;
 		mlx->text[i]->img = mlx_xpm_file_to_image(mlx->ptr, \
 		mlx->text[i]->path, &mlx->text[i]->width, &mlx->text[i]->height);
+		if (!mlx->text[i]->img)
+			write_errors(mlx, 3);
 		mlx->text[i]->data = (unsigned int*)mlx_get_data_addr(\
 		mlx->text[i]->img, &mlx->text[i]->bpp, &mlx->text[i]->line_len,\
 		&mlx->text[i]->endian);

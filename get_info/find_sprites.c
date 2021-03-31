@@ -63,7 +63,6 @@ void		find_spr(t_mlx *mlx, int *count)
 	int i;
 	int spr_n;
 	int j;
-	int diff_pl_sp;
 
 	i = 0;
 	spr_n = 0;

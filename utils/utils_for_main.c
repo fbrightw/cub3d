@@ -51,7 +51,7 @@ int				ft_strchr_mod(char *str, char *s, int *index, int *ch)
 	return (0);
 }
 
-int				strchr_mod(char *str, char *s, int *index, int *ch)
+int				strchr_mod(char *str, char *s, int *ch)
 {
 	int i;
 
