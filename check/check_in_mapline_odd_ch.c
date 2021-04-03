@@ -111,3 +111,17 @@ void	count_comma(t_mlx *mlx, char *line)
 	if (count > 2)
 		write_errors(mlx, 12);
 }
+
+int		right_ch(char c, char *right_chs)
+{
+	int i;
+
+	i = 0;
+	while (right_chs[i])
+	{
+		if (c == right_chs[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}

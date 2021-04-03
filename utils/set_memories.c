@@ -70,3 +70,19 @@ void		xpm_to_spr(t_mlx *mlx)
 		i++;
 	}
 }
+
+void		free_map(t_mlx *mlx)
+{
+	int i;
+
+	i = 0;
+	if (mlx->map)
+	{
+		while (mlx->map[i])
+		{
+			free(mlx->map[i]);
+			i++;
+		}
+		free(mlx->map);
+	}
+}

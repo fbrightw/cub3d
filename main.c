@@ -50,7 +50,7 @@ int				map_filling(t_mlx *mlx, t_list *head)
 		if (i >= mlx->q_lines)
 		{
 			mlx->map[i - mlx->q_lines] = head->content;
-			check_line(mlx, mlx->map[i - mlx->q_lines]);
+			check_line(mlx, (i - mlx->q_lines));
 			if (ft_strchr_mod(mlx->map[i - mlx->q_lines], "NEWS", &index, &ch))
 				find_pl(mlx->map[i - mlx->q_lines], mlx, i - mlx->q_lines, ch);
 			count_spr(mlx, i - mlx->q_lines, &count);
@@ -79,9 +79,13 @@ t_list			*ft_reading(t_mlx *mlx, int fd, char *line)
 			mlx->q_lines++;
 	}
 	if (ret == -1)
+	{
+		close(fd);
 		write_errors(mlx, 10);
+	}
 	else
 		ft_lstadd_back(&head, ft_lstnew(line));
+	close(fd);
 	mlx->size = i + 1;
 	return (head);
 }
@@ -98,7 +102,10 @@ int				main(int argc, char **argv)
 	zeros_to_var_in_mlx(&mlx);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
+	{
+		close(fd);
 		write_errors(&mlx, 8);
+	}
 	mlx.lists = ft_reading(&mlx, fd, line);
 	if (!(mlx.map = ft_calloc(mlx.size - mlx.q_lines + 2, sizeof(char*))))
 	{
@@ -108,6 +115,6 @@ int				main(int argc, char **argv)
 	i = map_filling(&mlx, mlx.lists);
 	validation(&mlx, i);
 	mlx.size = mlx.size - mlx.q_lines;
-	close(fd);
+	check_borders(&mlx);
 	ft_start(&mlx, argc, argv);
 }

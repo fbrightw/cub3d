@@ -113,6 +113,9 @@ int		write_errors(t_mlx *mlx, int fl)
 	if (mlx->mem_to_text == 1)
 		free_text_spr(mlx, 'S');
 	free_floor_ceil(mlx);
+	free_map(mlx);
+	if (fl > 7)
+		write_errors_part2(fl);
 	if (fl == 1)
 		printf("Error\nWrong size of window");
 	if (fl == 3)
@@ -125,6 +128,5 @@ int		write_errors(t_mlx *mlx, int fl)
 		printf("Error\nduplicates!");
 	if (fl == 7)
 		printf("Error\nwrong map!!!");
-	write_errors_part2(fl);
 	exit(0);
 }

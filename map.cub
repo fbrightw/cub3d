@@ -1,15 +1,19 @@
 R 1920 1080
+
 NO ./xpm_files/Bart.xpm
 EA ./xpm_files/ASLEEP.xpm
-WE ./xpm_files/LIZII.xpm
+
+
+
+WE       ./xpm_files/LIZII.xpm
+S ./xpm_files/liza_simpson_saks.xpm
 SO ./xpm_files/DOPE.xpm
-S              ./xpm_files/liza_simpson_saks.xpm
+
 F 0,12,0
 C 0,110,120
 
-
-11111111
-10000001
-1000N001
-10000001
-11111111
+11111111111111111
+101101101  111111
+111100N111  10111
+11100000011   1
+1111111111111111

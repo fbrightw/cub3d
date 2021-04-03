@@ -12,7 +12,7 @@ SRCS	:=	check/check_in_mapline_odd_ch.c check/check_map.c check/check_texts.c ch
 			main.c libft/ft_atoi.c libft/ft_calloc.c libft/ft_get_next_line_utils.c libft/ft_get_next_line.c libft/ft_isdigit.c\
 			libft/ft_lstadd_back.c libft/ft_lstclear.c libft/ft_lstlast.c libft/ft_lstnew.c libft/ft_lstsize.c \
 			libft/ft_memset.c libft/ft_split.c libft/ft_strchr.c libft/ft_strdup.c libft/ft_strjoin.c \
-			libft/ft_strlen.c libft/ft_strncmp.c libft/ft_substr.c
+			libft/ft_strlen.c libft/ft_strncmp.c libft/ft_substr.c check/check_surronding_in_map.c
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -21,6 +21,8 @@ RM		=	rm -f
 MAP		=	map.cub
 
 all:	$(NAME)
+
+bonus:	$(NAME)
 
 $(NAME):	$(OBJS)
 		$(CC) -g get_info/screen_size.m -Imlx -lmlx -framework OpenGl -framework AppKit -O2 $(SRCS) -o $(NAME)

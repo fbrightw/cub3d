@@ -24,6 +24,7 @@ int		open_images(char *line)
 
 int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 {
+	*index += 1;
 	if (*ch == 'N')
 		if (line[*index] == 'O')
 			write_errors(mlx, 6);
@@ -39,13 +40,20 @@ int		ft_additional(t_mlx *mlx, char *line, int *index, int *ch)
 	return (0);
 }
 
-int		check_line(t_mlx *mlx, char *line)
+int		check_line(t_mlx *mlx, int i)
 {
+	int j;
+
+	j = 0;
 	if (mlx->no && mlx->so && mlx->we && mlx->ea && mlx->f && mlx->c && mlx->s)
 	{
-		while (*line == ' ')
-			line++;
-		check_for_odd_ch(mlx, line);
+		if (i == 0)
+			while (mlx->map[i][j])
+				(mlx->map[i][j] == '1') ? (j++) : (write_errors(mlx, 7));
+		else if (i == mlx->size - mlx->q_lines)
+			while (mlx->map[i][j])
+				(mlx->map[i][j] == '1') ? (j++) : (write_errors(mlx, 7));
+		check_for_odd_ch(mlx, mlx->map[i]);
 	}
 	else
 		write_errors(mlx, 11);

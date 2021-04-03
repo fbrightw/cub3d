@@ -58,8 +58,8 @@ void		check_floor_ceil(t_mlx *mlx, char **line)
 		else
 			i++;
 	}
-	if (i > 3)
-		write_errors(mlx, 4);
+	if (i > 3 || i < 3)
+		write_errors(mlx, 9);
 }
 
 char		*spaces_or_end(t_mlx *mlx, char *line)
@@ -106,22 +106,21 @@ int			fill_certain_texture(t_mlx *mlx, char *line, char fl_of_side[3])
 	ch = 0;
 	if (!mlx->no || !mlx->so || !mlx->we || !mlx->ea)
 	{
-		line++;
-		if (*line == fl_of_side[1])
+		if (*(++line) == fl_of_side[1])
 		{
-			line++;
+			if (!(*(++line) == ' '))
+				write_errors(mlx, 4);
 			while (*line == ' ')
 				line++;
 			check_textures(mlx, line, fl_of_side);
 			return (init_texts(mlx, line, fl_of_side));
 		}
-		write_errors(mlx, 4);
+		if (fl_of_side[0] == 'S' && !mlx->s)
+			return (0);
+		write_errors(mlx, 7);
 	}
 	if (strchr_mod(line, "NEWSFC", &ch))
-	{
-		index += 1;
 		if (ft_additional(mlx, line, &index, &ch))
 			write_errors(mlx, 6);
-	}
 	return (0);
 }

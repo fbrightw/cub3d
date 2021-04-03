@@ -14,13 +14,13 @@
 
 int			fill_texts(t_mlx *mlx, char *line, int *ch)
 {
-	if (*ch == 'N')
+	if (!ft_strncmp(line, "NO ", 3))
 		return (fill_certain_texture(mlx, line, "NO"));
 	else if (*ch == 'S')
 	{
 		if (!(fill_certain_texture(mlx, line, "SO")))
 		{
-			if (!mlx->s)
+			if (!mlx->s && *(++line) == ' ')
 			{
 				while (*(++line) == ' ')
 					;
@@ -28,13 +28,13 @@ int			fill_texts(t_mlx *mlx, char *line, int *ch)
 				mlx->s = ft_strchr(line, '.');
 				return (1);
 			}
-			write_errors(mlx, 6);
+			write_errors(mlx, 4);
 		}
 		return (1);
 	}
-	else if (*ch == 'W')
+	else if (!(ft_strncmp(line, "WE ", 3)))
 		return (fill_certain_texture(mlx, line, "WE"));
-	else if (*ch == 'E')
+	else if (!(ft_strncmp(line, "EA ", 3)))
 		return (fill_certain_texture(mlx, line, "EA"));
 	return (0);
 }
@@ -53,7 +53,7 @@ int			screen_res_newsc(t_mlx *mlx, char *line, char **textures)
 	int ch;
 
 	ch = 0;
-	if (*line == 'R')
+	if (!ft_strncmp(line, "R ", 2))
 	{
 		if (*(++line) == ' ')
 			while (*line == ' ')
@@ -94,7 +94,7 @@ int			find_textures(t_mlx *mlx, char *line)
 				&& mlx->hero.x != -1)
 					write_errors(mlx, 6);
 			}
-	if (!ft_strchr_mod(line, "RNEWSFC120", &index, &ch))
+	if (!ft_strchr_mod(line, "RNEWSFC120 ", &index, &ch))
 		write_errors(mlx, 4);
 	return (screen_res_newsc(mlx, line, textures));
 }
